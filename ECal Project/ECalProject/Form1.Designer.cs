@@ -30,8 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.button34 = new System.Windows.Forms.Button();
-            this.button33 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
+            this.closeParButton = new System.Windows.Forms.Button();
+            this.openParButton = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
@@ -71,8 +71,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.button34);
-            this.panel1.Controls.Add(this.button33);
-            this.panel1.Controls.Add(this.button32);
+            this.panel1.Controls.Add(this.closeParButton);
+            this.panel1.Controls.Add(this.openParButton);
             this.panel1.Controls.Add(this.button31);
             this.panel1.Controls.Add(this.button30);
             this.panel1.Controls.Add(this.button29);
@@ -120,25 +120,27 @@
             this.button34.Text = "sqrt";
             this.button34.UseVisualStyleBackColor = true;
             // 
-            // button33
+            // closeParButton
             // 
-            this.button33.Location = new System.Drawing.Point(230, 215);
-            this.button33.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(44, 46);
-            this.button33.TabIndex = 66;
-            this.button33.Text = ")";
-            this.button33.UseVisualStyleBackColor = true;
+            this.closeParButton.Location = new System.Drawing.Point(230, 215);
+            this.closeParButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.closeParButton.Name = "closeParButton";
+            this.closeParButton.Size = new System.Drawing.Size(44, 46);
+            this.closeParButton.TabIndex = 66;
+            this.closeParButton.Text = ")";
+            this.closeParButton.UseVisualStyleBackColor = true;
+            this.closeParButton.Click += new System.EventHandler(this.closeParButton_Click);
             // 
-            // button32
+            // openParButton
             // 
-            this.button32.Location = new System.Drawing.Point(184, 215);
-            this.button32.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(40, 46);
-            this.button32.TabIndex = 65;
-            this.button32.Text = "(";
-            this.button32.UseVisualStyleBackColor = true;
+            this.openParButton.Location = new System.Drawing.Point(184, 215);
+            this.openParButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.openParButton.Name = "openParButton";
+            this.openParButton.Size = new System.Drawing.Size(40, 46);
+            this.openParButton.TabIndex = 65;
+            this.openParButton.Text = "(";
+            this.openParButton.UseVisualStyleBackColor = true;
+            this.openParButton.Click += new System.EventHandler(this.openParButton_Click);
             // 
             // button31
             // 
@@ -506,8 +508,8 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.Button button33;
-        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button closeParButton;
+        private System.Windows.Forms.Button openParButton;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button29;
