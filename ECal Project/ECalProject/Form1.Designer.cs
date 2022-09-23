@@ -34,7 +34,7 @@
             this.openParButton = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
-            this.button29 = new System.Windows.Forms.Button();
+            this.exponentButton = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.panel1.Controls.Add(this.openParButton);
             this.panel1.Controls.Add(this.button31);
             this.panel1.Controls.Add(this.button30);
-            this.panel1.Controls.Add(this.button29);
+            this.panel1.Controls.Add(this.exponentButton);
             this.panel1.Controls.Add(this.button28);
             this.panel1.Controls.Add(this.button27);
             this.panel1.Controls.Add(this.button26);
@@ -162,15 +162,16 @@
             this.button30.Text = "Pi";
             this.button30.UseVisualStyleBackColor = true;
             // 
-            // button29
+            // exponentButton
             // 
-            this.button29.Location = new System.Drawing.Point(184, 161);
-            this.button29.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(40, 46);
-            this.button29.TabIndex = 62;
-            this.button29.Text = "^";
-            this.button29.UseVisualStyleBackColor = true;
+            this.exponentButton.Location = new System.Drawing.Point(184, 161);
+            this.exponentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.exponentButton.Name = "exponentButton";
+            this.exponentButton.Size = new System.Drawing.Size(40, 46);
+            this.exponentButton.TabIndex = 62;
+            this.exponentButton.Text = "^";
+            this.exponentButton.UseVisualStyleBackColor = true;
+            this.exponentButton.Click += new System.EventHandler(this.numericButton_click);
             // 
             // button28
             // 
@@ -512,7 +513,7 @@
         private System.Windows.Forms.Button openParButton;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button exponentButton;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button26;

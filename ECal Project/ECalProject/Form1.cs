@@ -6,6 +6,7 @@ namespace ECalProject
     public partial class Calculator : Form
     {
         private int openPars;
+        private MathCalculation mathCalc = new MathCalculation();
          public Calculator()
         {
             InitializeComponent();
@@ -86,7 +87,7 @@ namespace ECalProject
 
 
 
-        // Function takes numbers 1-9,0,. and adds them to the text box
+        // Function takes numbers 1-9,0,.,^ and adds them to the text box
         private void numericButton_click(object sender, EventArgs e)
         {
             this.outputTextBox.Text += (sender as Button).Text;

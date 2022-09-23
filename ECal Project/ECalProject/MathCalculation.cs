@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECalProject
 {
-    internal class MathCalculation
+    public class MathCalculation
     {
 
         //Square root
