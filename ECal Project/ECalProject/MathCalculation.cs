@@ -74,7 +74,7 @@ namespace ECalProject
         //Percent
         public double percent(double num1, double num2)
         {
-            double prod = num1 * num1;
+            double prod = num1 * num2;
             return prod / 100;
         }
 
