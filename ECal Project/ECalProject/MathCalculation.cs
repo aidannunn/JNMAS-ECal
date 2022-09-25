@@ -72,10 +72,9 @@ namespace ECalProject
         }
 
         //Percent
-        public double percent(double num1, double num2)
+        public double percent(double num)
         {
-            double prod = num1 * num2;
-            return prod / 100;
+            return num / 100;
         }
 
         //e-constant (euler's constant)
