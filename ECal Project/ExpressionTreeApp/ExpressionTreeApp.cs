@@ -5,7 +5,7 @@
 namespace ExpressionTreeApp
 {
     using System;
-    using CalculatorEngine;
+    using SpreadsheetEngine;
 
     /// <summary>
     /// Simple console application for previewing the expression tree in SpreadsheetEngine.dll.

@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace CalculatorEngine
+namespace SpreadsheetEngine
 {
     using System;
     using System.Collections.Generic;
