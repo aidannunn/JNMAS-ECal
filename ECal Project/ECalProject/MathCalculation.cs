@@ -88,5 +88,10 @@ namespace ECalProject
         {
             return 1 / num;
         }
+
+        public double piFunction()
+        {
+            return Math.PI;
+        }
     }
 }

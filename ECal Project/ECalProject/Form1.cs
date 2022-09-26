@@ -268,6 +268,11 @@ namespace ECalProject
         {
             this.outputTextBox.Text = Convert.ToString(mathCalc.inverseFunction(Convert.ToDouble(this.outputTextBox.Text)));
         }
+
+        private void Pi_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.piFunction());
+        }
     }
 }
 

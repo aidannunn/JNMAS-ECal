@@ -157,6 +157,7 @@
             this.Pi.TabIndex = 63;
             this.Pi.Text = "Pi";
             this.Pi.UseVisualStyleBackColor = true;
+            this.Pi.Click += new System.EventHandler(this.Pi_Click);
             // 
             // exponentButton
             // 
