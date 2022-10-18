@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetEngine", "Spread
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECalProject", "ECalProject\ECalProject.csproj", "{F3D92702-B5EB-4785-827F-07A502602780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aidan's Integration Testing", "Aidan's Integration Testing\Aidan's Integration Testing.csproj", "{36EE62FC-1B96-43C7-9A27-38ACF776C231}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{568BFC72-4537-4DDC-92BB-94394EECAE9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{F3D92702-B5EB-4785-827F-07A502602780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D92702-B5EB-4785-827F-07A502602780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3D92702-B5EB-4785-827F-07A502602780}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36EE62FC-1B96-43C7-9A27-38ACF776C231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36EE62FC-1B96-43C7-9A27-38ACF776C231}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36EE62FC-1B96-43C7-9A27-38ACF776C231}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36EE62FC-1B96-43C7-9A27-38ACF776C231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568BFC72-4537-4DDC-92BB-94394EECAE9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568BFC72-4537-4DDC-92BB-94394EECAE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568BFC72-4537-4DDC-92BB-94394EECAE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568BFC72-4537-4DDC-92BB-94394EECAE9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
