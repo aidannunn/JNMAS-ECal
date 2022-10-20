@@ -3,9 +3,9 @@
 using NUnit.Framework;
 using SpreadsheetEngine;
 
-namespace MathCalculationTesting
+namespace UnitTesting
 {
-    public class Tests
+    public class MathCalculationTest
     {
         [SetUp]
         public void Setup()
