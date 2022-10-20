@@ -8,4 +8,4 @@ the level of precision desired (e.g., precise up to four decimal places). Some
 advanced computations could also be supported, such as power, root, triangular
 calculations, and so on.
 
-Team members: Sebastian Smith (contact) (sebastian.smith@wsu.edu), Nathan Brown (nathan.g.brown@wsu.edu), Jared Lustig (jared.lustig@wsu.edu), Musa Husseini (musa.husseini@wsu.edu), Aidan Nunn (aidan.nunn@wsu.edu).
+Team members: Sebastian Smith (contact) (sebastian.smith@wsu.edu), Jared Lustig (jared.lustig@wsu.edu), Musa Husseini (musa.husseini@wsu.edu), Aidan Nunn (aidan.nunn@wsu.edu).

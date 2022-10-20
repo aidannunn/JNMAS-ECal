@@ -4,7 +4,7 @@ using SpreadsheetEngine;
 using Moq;
 using System.Collections.Generic;
 
-namespace TestProject1
+namespace IntegrationTestingExpressionTree
 {
     public class Tests
     {
@@ -14,35 +14,6 @@ namespace TestProject1
 
         }
 
-        /// <summary>
-        /// Example of reflections in C#
-        /// </summary>
-        [Test]
-        public void test_reflections_example()
-        {
-            ExpressionTree testObject = new ExpressionTree("1+2*(3*3)");// create class object
-
-            MethodInfo methodInfo = typeof(ExpressionTree).GetMethod("IsLeftParenthesis", BindingFlags.NonPublic | BindingFlags.Instance);//get the method info from the class
-
-            object[] parameters = { '(' };//parameter to be passed into private method. passed in as array
-
-            object result = methodInfo.Invoke(testObject, parameters);//result stores the result of calling the method
-
-            Assert.That(result, Is.EqualTo(true));
-        }
-
-        /// <summary>
-        /// Example of stubbing in C#
-        /// </summary>
-        [Test]
-        public void test_stubbing_in_CSharp()
-        {
-            IExpressionTree_IntegrationTesting mockTree = Mock.Of<IExpressionTree_IntegrationTesting>(l => l.IsLeftParenthesis(')') == true);
-
-            bool result = mockTree.IsLeftParenthesis(')');
-
-            Assert.That(result, Is.True);
-        }
 
         /// <summary>
         /// Test the ExpressionTree with all methods stubbed.

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpreadsheetEngine
 {
-    public class ExpressionTree_IntegrationTesting : IExpressionTree_IntegrationTesting
+    public class ExpressionTree_IntegrationTesting
     {
         public ExpressionTreeNode root;
 
