@@ -2,11 +2,13 @@ namespace Musa_s_Integration_Testing
 {
     using NUnit.Framework;
     using SpreadsheetEngine;
+    using Moq;
+    using System.Reflection;
 
-     /*
-     * Top-Down Integration Testing of ExpressionTree
-     * Tests are organized in order of un-stubbing. The name of a test states which method is unstubbed.
-     */
+    /*
+    * Top-Down Integration Testing of ExpressionTree
+    * Tests are organized in order of un-stubbing. The name of a test states which method is unstubbed.
+    */
 
     public class Tests
     {
@@ -16,9 +18,238 @@ namespace Musa_s_Integration_Testing
         }
 
         [Test]
-        public void Test1()
+        public void Test1_StubAllMethods()
         {
-            Assert.Pass();
+            var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
+            mock.CallBase = true;
+
+            //For GetOperators
+            List<char> opList = new List<char>();
+            opList.Add('+');
+            opList.Add('-');
+            opList.Add('*');
+            opList.Add('/');
+            opList.Add('^');
+
+            //For GetAssociativity
+            OperatorNode.Associative ANode = OperatorNode.Associative.Left;
+
+
+            //Stub CreateOperator
+            mock.Setup(l => l.CreateOperatorNode('+')).Returns(It.IsAny<OperatorNode>());
+            mock.Setup(l => l.CreateOperatorNode('-')).Returns(It.IsAny<OperatorNode>());
+            mock.Setup(l => l.CreateOperatorNode('*')).Returns(It.IsAny<OperatorNode>());
+            mock.Setup(l => l.CreateOperatorNode('/')).Returns(It.IsAny<OperatorNode>());
+            mock.Setup(l => l.CreateOperatorNode('^')).Returns(It.IsAny<OperatorNode>());
+
+            //Stub isOperator
+            mock.Setup(l => l.IsOperator('+')).Returns(true);
+            mock.Setup(l => l.IsOperator('-')).Returns(true);
+            mock.Setup(l => l.IsOperator('*')).Returns(true);
+            mock.Setup(l => l.IsOperator('/')).Returns(true);
+            mock.Setup(l => l.IsOperator('^')).Returns(true);
+
+            //Stub GetPrecedence
+            mock.Setup(l => l.GetPrecedence('+')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('-')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('*')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('/')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('^')).Returns(1);
+
+            //Stub GetOperators
+            mock.Setup(l => l.GetOperators()).Returns(opList);
+
+            //Stub GetAssociativity 
+            mock.Setup(l => l.GetAssociativity('+')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('-')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('*')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('/')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('^')).Returns(ANode);
+
+            //Stub TraverseAvaliableOperators
+            //mock.Setup(l => l.TraverseAvailableOperators().Returns(null);
+
+
+        }
+
+        [Test]
+        public void Test2_CreateOperator()
+        {
+            var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
+            mock.CallBase = true;
+
+            //For GetOperators
+            List<char> opList = new List<char>();
+            opList.Add('+');
+            opList.Add('-');
+            opList.Add('*');
+            opList.Add('/');
+            opList.Add('^');
+
+            //For GetAssociativity
+            OperatorNode.Associative ANode = OperatorNode.Associative.Left;
+
+
+            //Stub isOperator
+            mock.Setup(l => l.IsOperator('+')).Returns(true);
+            mock.Setup(l => l.IsOperator('-')).Returns(true);
+            mock.Setup(l => l.IsOperator('*')).Returns(true);
+            mock.Setup(l => l.IsOperator('/')).Returns(true);
+            mock.Setup(l => l.IsOperator('^')).Returns(true);
+
+            //Stub GetPrecedence
+            mock.Setup(l => l.GetPrecedence('+')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('-')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('*')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('/')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('^')).Returns(1);
+
+            //Stub GetOperators
+            mock.Setup(l => l.GetOperators()).Returns(opList);
+
+            //Stub GetAssociativity 
+            mock.Setup(l => l.GetAssociativity('+')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('-')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('*')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('/')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('^')).Returns(ANode);
+
+            //Assert CreateOperator 
+
+            OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
+
+            //Assert.That(mockOperator.CreateOperatorNode('+'), Is.EqualTo());
+            //Assert.That(mockOperator.CreateOperatorNode('-'), Is.EqualTo());
+            //Assert.That(mockOperator.CreateOperatorNode('*'), Is.EqualTo());
+            //Assert.That(mockOperator.CreateOperatorNode('/'), Is.EqualTo());
+            //Assert.That(mockOperator.CreateOperatorNode('^'), Is.EqualTo());
+
+        }
+
+        [Test]
+        public void Test3_IsOperator()
+        {
+            var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
+            mock.CallBase = true;
+
+            //For GetOperators
+            List<char> opList = new List<char>();
+            opList.Add('+');
+            opList.Add('-');
+            opList.Add('*');
+            opList.Add('/');
+            opList.Add('^');
+
+            //For GetAssociativity
+            OperatorNode.Associative ANode = OperatorNode.Associative.Left;
+
+            //Stub GetPrecedence
+            mock.Setup(l => l.GetPrecedence('+')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('-')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('*')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('/')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('^')).Returns(1);
+
+            //Stub GetOperators
+            mock.Setup(l => l.GetOperators()).Returns(opList);
+
+            //Stub GetAssociativity 
+            mock.Setup(l => l.GetAssociativity('+')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('-')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('*')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('/')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('^')).Returns(ANode);
+
+            //Assert IsOperator
+            OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
+            Assert.That(mockOperator.IsOperator('+'), Is.True);
+            Assert.That(mockOperator.IsOperator('-'), Is.True);
+            Assert.That(mockOperator.IsOperator('*'), Is.True);
+            Assert.That(mockOperator.IsOperator('/'), Is.True);
+            Assert.That(mockOperator.IsOperator('^'), Is.True);
+
+        }
+
+        [Test]
+        public void Test3_GetPrecedence()
+        {
+            var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
+            mock.CallBase = true;
+
+            //For GetOperators
+            List<char> opList = new List<char>();
+            opList.Add('+');
+            opList.Add('-');
+            opList.Add('*');
+            opList.Add('/');
+            opList.Add('^');
+
+            //For GetAssociativity
+            OperatorNode.Associative ANode = OperatorNode.Associative.Left;
+
+            //Stub GetOperators
+            mock.Setup(l => l.GetOperators()).Returns(opList);
+
+            //Stub GetAssociativity 
+            mock.Setup(l => l.GetAssociativity('+')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('-')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('*')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('/')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('^')).Returns(ANode);
+
+            //Assert GetPrecedence
+            OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
+            Assert.That(mockOperator.GetPrecedence('+'), Is.EqualTo(1));
+            Assert.That(mockOperator.GetPrecedence('-'), Is.EqualTo(1));
+            Assert.That(mockOperator.GetPrecedence('*'), Is.EqualTo(1));
+            Assert.That(mockOperator.GetPrecedence('/'), Is.EqualTo(1));
+            Assert.That(mockOperator.GetPrecedence('^'), Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Test4_GetOperators()
+        {
+            var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
+            mock.CallBase = true;
+
+            //For GetOperators
+            List<char> opList = new List<char>();
+            opList.Add('+');
+            opList.Add('-');
+            opList.Add('*');
+            opList.Add('/');
+            opList.Add('^');
+
+            //For GetAssociativity
+            OperatorNode.Associative ANode = OperatorNode.Associative.Left;
+
+            //Stub GetAssociativity 
+            mock.Setup(l => l.GetAssociativity('+')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('-')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('*')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('/')).Returns(ANode);
+            mock.Setup(l => l.GetAssociativity('^')).Returns(ANode);
+
+            //Assert GetOperators
+            OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
+
+            Assert.That(mockOperator.GetOperators(), Is.EqualTo(opList));
+        }
+
+        [Test]
+        public void Test5_GetAssociativity()
+        {
+            var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
+            mock.CallBase = true;
+
+            //Assert GetOperators
+            OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
+
+            Assert.That(mockOperator.GetAssociativity('+'), Is.EqualTo(OperatorNode.Associative.Left));
+            Assert.That(mockOperator.GetAssociativity('-'), Is.EqualTo(OperatorNode.Associative.Left));
+            Assert.That(mockOperator.GetAssociativity('*'), Is.EqualTo(OperatorNode.Associative.Left));
+            Assert.That(mockOperator.GetAssociativity('/'), Is.EqualTo(OperatorNode.Associative.Left));
+            Assert.That(mockOperator.GetAssociativity('^'), Is.EqualTo(OperatorNode.Associative.Left));
         }
     }
 }

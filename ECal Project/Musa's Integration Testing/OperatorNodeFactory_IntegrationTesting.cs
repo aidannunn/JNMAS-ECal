@@ -137,7 +137,7 @@ namespace Musa_s_Integration_Testing
         /// Views the available operator nodes and adds them to the dictionary via the constructor.
         /// </summary>
         /// <param name="onOperator">Delegate.</param>
-        void TraverseAvailableOperators(OnOperator onOperator)
+        public void TraverseAvailableOperators(OnOperator onOperator)
         {
             Type operatorNodeType = typeof(OperatorNode);
 

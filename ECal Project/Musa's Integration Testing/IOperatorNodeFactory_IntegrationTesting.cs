@@ -20,7 +20,7 @@ namespace Musa_s_Integration_Testing
 
         OperatorNode.Associative GetAssociativity(char op);
 
-        void TraverseAvailableOperators(OnOperator onOperator);
+        //void TraverseAvailableOperators(OnOperator onOperator);
 
     }
 }
