@@ -14,6 +14,7 @@ namespace Musa_s_Integration_Testing
         [SetUp]
         public void Setup()
         {
+
         }
 
         [Test]
@@ -22,12 +23,17 @@ namespace Musa_s_Integration_Testing
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
 
+            //For Constructor and TraverseAvaliableOperators()
+            Dictionary<char, Type> operators = new Dictionary<char, Type>();
+
+            //For CreateOperatorr
             OperatorNodeFactory factory = new OperatorNodeFactory();
             OperatorNode nodePlus = factory.CreateOperatorNode('+');
             OperatorNode nodeMinus = factory.CreateOperatorNode('-');
             OperatorNode nodeMult = factory.CreateOperatorNode('*');
             OperatorNode nodeDiv = factory.CreateOperatorNode('/');
             OperatorNode nodeSqr = factory.CreateOperatorNode('^');
+            
 
             //For GetOperators
             List<char> opList = new List<char>();
@@ -40,6 +46,9 @@ namespace Musa_s_Integration_Testing
             //For GetAssociativity
             OperatorNode.Associative ANode = OperatorNode.Associative.Left;
 
+
+            //Stub TraverseAvaliableOperators
+            mock.Verify(l => l.TraverseAvailableOperators((op, type) => operators.Add(op, type)), Times.Once());
 
             //Stub CreateOperator
             mock.Setup(l => l.CreateOperatorNode('+')).Returns(nodePlus);
@@ -72,9 +81,6 @@ namespace Musa_s_Integration_Testing
             mock.Setup(l => l.GetAssociativity('/')).Returns(ANode);
             mock.Setup(l => l.GetAssociativity('^')).Returns(ANode);
 
-            //Stub TraverseAvaliableOperators
-            //mock.Setup(l => l.TraverseAvailableOperators().Returns(null);
-
 
         }
 
@@ -84,6 +90,7 @@ namespace Musa_s_Integration_Testing
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
 
+            //For CreateOperatorr
             OperatorNodeFactory factory = new OperatorNodeFactory();
             OperatorNode nodePlus = factory.CreateOperatorNode('+');
             OperatorNode nodeMinus = factory.CreateOperatorNode('-');
