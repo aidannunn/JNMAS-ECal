@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetEngine", "Spread
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECalProject", "ECalProject\ECalProject.csproj", "{F3D92702-B5EB-4785-827F-07A502602780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musa's Integration Testing", "Musa's Integration Testing\Musa's Integration Testing.csproj", "{FB4B9F04-DB86-46B2-904C-A92C0340E0B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musa's Integration Tests", "Musa's Integration Tests\Musa's Integration Tests.csproj", "{03ABB28D-46B4-4459-BEC6-785383251CC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{F3D92702-B5EB-4785-827F-07A502602780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D92702-B5EB-4785-827F-07A502602780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3D92702-B5EB-4785-827F-07A502602780}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB4B9F04-DB86-46B2-904C-A92C0340E0B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB4B9F04-DB86-46B2-904C-A92C0340E0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB4B9F04-DB86-46B2-904C-A92C0340E0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB4B9F04-DB86-46B2-904C-A92C0340E0B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03ABB28D-46B4-4459-BEC6-785383251CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03ABB28D-46B4-4459-BEC6-785383251CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03ABB28D-46B4-4459-BEC6-785383251CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03ABB28D-46B4-4459-BEC6-785383251CC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

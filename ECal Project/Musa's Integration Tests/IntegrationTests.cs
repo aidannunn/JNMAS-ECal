@@ -1,15 +1,11 @@
-namespace Musa_s_Integration_Testing
+namespace Musa_s_Integration_Tests
 {
     using NUnit.Framework;
     using System.Reflection;
     using SpreadsheetEngine;
     using Moq;
     using System.Collections.Generic;
-
-    /*
-    * Top-Down Integration Testing of ExpressionTree
-    * Tests are organized in order of un-stubbing. The name of a test states which method is unstubbed.
-    */
+    using System;
 
     public class Tests
     {
@@ -35,7 +31,7 @@ namespace Musa_s_Integration_Testing
             OperatorNode nodeMult = factory.CreateOperatorNode('*');
             OperatorNode nodeDiv = factory.CreateOperatorNode('/');
             OperatorNode nodeSqr = factory.CreateOperatorNode('^');
-            
+
 
             //For GetOperators
             List<char> opList = new List<char>();
@@ -82,7 +78,6 @@ namespace Musa_s_Integration_Testing
             mock.Setup(l => l.GetAssociativity('*')).Returns(ANode);
             mock.Setup(l => l.GetAssociativity('/')).Returns(ANode);
             mock.Setup(l => l.GetAssociativity('^')).Returns(ANode);
-
 
         }
 
