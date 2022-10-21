@@ -35,10 +35,10 @@ namespace Musa_s_Integration_Tests
 
             //For GetOperators
             List<char> opList = new List<char>();
-            opList.Add('+');
+            opList.Add('/');
             opList.Add('-');
             opList.Add('*');
-            opList.Add('/');
+            opList.Add('+');
             opList.Add('^');
 
             //For GetAssociativity
@@ -65,9 +65,9 @@ namespace Musa_s_Integration_Tests
             //Stub GetPrecedence
             mock.Setup(l => l.GetPrecedence('+')).Returns(1);
             mock.Setup(l => l.GetPrecedence('-')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('*')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('/')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('^')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('*')).Returns(2);
+            mock.Setup(l => l.GetPrecedence('/')).Returns(2);
+            mock.Setup(l => l.GetPrecedence('^')).Returns(3);
 
             //Stub GetOperators
             mock.Setup(l => l.GetOperators()).Returns(opList);
@@ -97,10 +97,10 @@ namespace Musa_s_Integration_Tests
 
             //For GetOperators
             List<char> opList = new List<char>();
-            opList.Add('+');
+            opList.Add('/');
             opList.Add('-');
             opList.Add('*');
-            opList.Add('/');
+            opList.Add('+');
             opList.Add('^');
 
             //For GetAssociativity
@@ -117,9 +117,9 @@ namespace Musa_s_Integration_Tests
             //Stub GetPrecedence
             mock.Setup(l => l.GetPrecedence('+')).Returns(1);
             mock.Setup(l => l.GetPrecedence('-')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('*')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('/')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('^')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('*')).Returns(2);
+            mock.Setup(l => l.GetPrecedence('/')).Returns(2);
+            mock.Setup(l => l.GetPrecedence('^')).Returns(3);
 
             //Stub GetOperators
             mock.Setup(l => l.GetOperators()).Returns(opList);
@@ -135,11 +135,11 @@ namespace Musa_s_Integration_Tests
 
             OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
 
-            Assert.That(mockOperator.CreateOperatorNode('+'), Is.EqualTo(nodePlus));
-            Assert.That(mockOperator.CreateOperatorNode('-'), Is.EqualTo(nodeMinus));
-            Assert.That(mockOperator.CreateOperatorNode('*'), Is.EqualTo(nodeMult));
-            Assert.That(mockOperator.CreateOperatorNode('/'), Is.EqualTo(nodeDiv));
-            Assert.That(mockOperator.CreateOperatorNode('^'), Is.EqualTo(nodeSqr));
+            Assert.AreEqual(mockOperator.CreateOperatorNode('+'), nodePlus);
+            Assert.AreEqual(mockOperator.CreateOperatorNode('-'), nodeMinus);
+            Assert.AreEqual(mockOperator.CreateOperatorNode('*'), nodeMult);
+            Assert.AreEqual(mockOperator.CreateOperatorNode('/'), nodeDiv);
+            Assert.AreEqual(mockOperator.CreateOperatorNode('^'), nodeSqr);
 
         }
 
@@ -151,10 +151,10 @@ namespace Musa_s_Integration_Tests
 
             //For GetOperators
             List<char> opList = new List<char>();
-            opList.Add('+');
+            opList.Add('/');
             opList.Add('-');
             opList.Add('*');
-            opList.Add('/');
+            opList.Add('+');
             opList.Add('^');
 
             //For GetAssociativity
@@ -163,9 +163,9 @@ namespace Musa_s_Integration_Tests
             //Stub GetPrecedence
             mock.Setup(l => l.GetPrecedence('+')).Returns(1);
             mock.Setup(l => l.GetPrecedence('-')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('*')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('/')).Returns(1);
-            mock.Setup(l => l.GetPrecedence('^')).Returns(1);
+            mock.Setup(l => l.GetPrecedence('*')).Returns(2);
+            mock.Setup(l => l.GetPrecedence('/')).Returns(2);
+            mock.Setup(l => l.GetPrecedence('^')).Returns(3);
 
             //Stub GetOperators
             mock.Setup(l => l.GetOperators()).Returns(opList);
@@ -179,26 +179,27 @@ namespace Musa_s_Integration_Tests
 
             //Assert IsOperator
             OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
-            Assert.That(mockOperator.IsOperator('+'), Is.True);
-            Assert.That(mockOperator.IsOperator('-'), Is.True);
-            Assert.That(mockOperator.IsOperator('*'), Is.True);
-            Assert.That(mockOperator.IsOperator('/'), Is.True);
-            Assert.That(mockOperator.IsOperator('^'), Is.True);
+
+            Assert.IsTrue(mockOperator.IsOperator('+'));
+            Assert.IsTrue(mockOperator.IsOperator('-'));
+            Assert.IsTrue(mockOperator.IsOperator('*'));
+            Assert.IsTrue(mockOperator.IsOperator('/'));
+            Assert.IsTrue(mockOperator.IsOperator('^'));
 
         }
 
         [Test]
-        public void Test3_GetPrecedence()
+        public void Test4_GetPrecedence()
         {
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
 
             //For GetOperators
             List<char> opList = new List<char>();
-            opList.Add('+');
+            opList.Add('/');
             opList.Add('-');
             opList.Add('*');
-            opList.Add('/');
+            opList.Add('+');
             opList.Add('^');
 
             //For GetAssociativity
@@ -218,29 +219,29 @@ namespace Musa_s_Integration_Tests
             OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
             Assert.That(mockOperator.GetPrecedence('+'), Is.EqualTo(1));
             Assert.That(mockOperator.GetPrecedence('-'), Is.EqualTo(1));
-            Assert.That(mockOperator.GetPrecedence('*'), Is.EqualTo(1));
-            Assert.That(mockOperator.GetPrecedence('/'), Is.EqualTo(1));
-            Assert.That(mockOperator.GetPrecedence('^'), Is.EqualTo(1));
+            Assert.That(mockOperator.GetPrecedence('*'), Is.EqualTo(2));
+            Assert.That(mockOperator.GetPrecedence('/'), Is.EqualTo(2));
+            Assert.That(mockOperator.GetPrecedence('^'), Is.EqualTo(3));
         }
 
         [Test]
-        public void Test4_GetOperators()
+        public void Test5_GetOperators()
         {
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
 
             //For GetOperators
             List<char> opList = new List<char>();
-            opList.Add('+');
+            opList.Add('/');
             opList.Add('-');
             opList.Add('*');
-            opList.Add('/');
+            opList.Add('+');
             opList.Add('^');
 
             //For GetAssociativity
             OperatorNode.Associative ANode = OperatorNode.Associative.Left;
 
-            //Stub GetAssociativity 
+            //Stub GetAssociativity
             mock.Setup(l => l.GetAssociativity('+')).Returns(ANode);
             mock.Setup(l => l.GetAssociativity('-')).Returns(ANode);
             mock.Setup(l => l.GetAssociativity('*')).Returns(ANode);
@@ -251,10 +252,11 @@ namespace Musa_s_Integration_Tests
             OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
 
             Assert.That(mockOperator.GetOperators(), Is.EqualTo(opList));
+            Assert.AreEqual(mockOperator.GetOperators(), opList);
         }
 
         [Test]
-        public void Test5_GetAssociativity()
+        public void Test6_GetAssociativity()
         {
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
