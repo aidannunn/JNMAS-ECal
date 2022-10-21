@@ -87,14 +87,6 @@ namespace Musa_s_Integration_Tests
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
 
-            //For CreateOperatorr
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            OperatorNode nodePlus = factory.CreateOperatorNode('+');
-            OperatorNode nodeMinus = factory.CreateOperatorNode('-');
-            OperatorNode nodeMult = factory.CreateOperatorNode('*');
-            OperatorNode nodeDiv = factory.CreateOperatorNode('/');
-            OperatorNode nodeSqr = factory.CreateOperatorNode('^');
-
             //For GetOperators
             List<char> opList = new List<char>();
             opList.Add('/');
@@ -135,11 +127,11 @@ namespace Musa_s_Integration_Tests
 
             OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
 
-            Assert.AreEqual(mockOperator.CreateOperatorNode('+'), nodePlus);
-            Assert.AreEqual(mockOperator.CreateOperatorNode('-'), nodeMinus);
-            Assert.AreEqual(mockOperator.CreateOperatorNode('*'), nodeMult);
-            Assert.AreEqual(mockOperator.CreateOperatorNode('/'), nodeDiv);
-            Assert.AreEqual(mockOperator.CreateOperatorNode('^'), nodeSqr);
+            Assert.IsInstanceOf<OperatorNode>(mockOperator.CreateOperatorNode('+'));
+            Assert.IsInstanceOf<OperatorNode>(mockOperator.CreateOperatorNode('-'));
+            Assert.IsInstanceOf<OperatorNode>(mockOperator.CreateOperatorNode('*'));
+            Assert.IsInstanceOf<OperatorNode>(mockOperator.CreateOperatorNode('/'));
+            Assert.IsInstanceOf<OperatorNode>(mockOperator.CreateOperatorNode('^'));
 
         }
 
