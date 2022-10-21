@@ -27,7 +27,7 @@ namespace Musa_s_Integration_Tests
         /// Gets a character list of operators from the dictionary.
         /// </summary>
         /// <returns>List of char operators.</returns>
-        public List<char> GetOperators()
+        public virtual List<char> GetOperators()
         {
             List<char> opList = new List<char>();
             foreach (char key in this.operators.Keys)
@@ -43,7 +43,7 @@ namespace Musa_s_Integration_Tests
         /// </summary>
         /// <param name="c">Operator character.</param>
         /// <returns>Boolean true or false.</returns>
-        public bool IsOperator(char c)
+        public virtual bool IsOperator(char c)
         {
             if (this.operators.Keys.Contains(c))
             {
@@ -60,7 +60,7 @@ namespace Musa_s_Integration_Tests
         /// </summary>
         /// <param name="op">Operator character.</param>
         /// <returns>Operator node child.</returns>
-        public OperatorNode CreateOperatorNode(char op)
+        public virtual OperatorNode CreateOperatorNode(char op)
         {
             if (this.operators.ContainsKey(op))
             {
@@ -79,7 +79,7 @@ namespace Musa_s_Integration_Tests
         /// </summary>
         /// <param name="op">Operator character.</param>
         /// <returns>Ushort value representing precedence.</returns>
-        public ushort GetPrecedence(char op)
+        public virtual ushort GetPrecedence(char op)
         {
             ushort output = 0;
 
@@ -108,7 +108,7 @@ namespace Musa_s_Integration_Tests
         /// </summary>
         /// <param name="op">Operator character.</param>
         /// <returns>Left or right associativity.</returns>
-        public OperatorNode.Associative GetAssociativity(char op)
+        public virtual OperatorNode.Associative GetAssociativity(char op)
         {
             OperatorNode.Associative output = OperatorNode.Associative.Left;
 
@@ -137,7 +137,7 @@ namespace Musa_s_Integration_Tests
         /// Views the available operator nodes and adds them to the dictionary via the constructor.
         /// </summary>
         /// <param name="onOperator">Delegate.</param>
-        public void TraverseAvailableOperators(OnOperator onOperator)
+        public virtual void TraverseAvailableOperators(OnOperator onOperator)
         {
             Type operatorNodeType = typeof(OperatorNode);
 

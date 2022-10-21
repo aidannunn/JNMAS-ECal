@@ -46,7 +46,7 @@ namespace Musa_s_Integration_Tests
 
 
             //Stub TraverseAvaliableOperators
-            mock.Verify(l => l.TraverseAvailableOperators((op, type) => operators.Add(op, type)), Times.Once());
+            //mock.Verify(l => l.TraverseAvailableOperators((op, type) => operators.Add(op, type)), Times.Once());
 
             //Stub CreateOperator
             mock.Setup(l => l.CreateOperatorNode('+')).Returns(nodePlus);
