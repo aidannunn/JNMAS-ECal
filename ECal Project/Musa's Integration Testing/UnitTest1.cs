@@ -3,7 +3,6 @@ namespace Musa_s_Integration_Testing
     using NUnit.Framework;
     using SpreadsheetEngine;
     using Moq;
-    using System.Reflection;
 
     /*
     * Top-Down Integration Testing of ExpressionTree
@@ -23,6 +22,13 @@ namespace Musa_s_Integration_Testing
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
 
+            OperatorNodeFactory factory = new OperatorNodeFactory();
+            OperatorNode nodePlus = factory.CreateOperatorNode('+');
+            OperatorNode nodeMinus = factory.CreateOperatorNode('-');
+            OperatorNode nodeMult = factory.CreateOperatorNode('*');
+            OperatorNode nodeDiv = factory.CreateOperatorNode('/');
+            OperatorNode nodeSqr = factory.CreateOperatorNode('^');
+
             //For GetOperators
             List<char> opList = new List<char>();
             opList.Add('+');
@@ -36,11 +42,11 @@ namespace Musa_s_Integration_Testing
 
 
             //Stub CreateOperator
-            mock.Setup(l => l.CreateOperatorNode('+')).Returns(It.IsAny<OperatorNode>());
-            mock.Setup(l => l.CreateOperatorNode('-')).Returns(It.IsAny<OperatorNode>());
-            mock.Setup(l => l.CreateOperatorNode('*')).Returns(It.IsAny<OperatorNode>());
-            mock.Setup(l => l.CreateOperatorNode('/')).Returns(It.IsAny<OperatorNode>());
-            mock.Setup(l => l.CreateOperatorNode('^')).Returns(It.IsAny<OperatorNode>());
+            mock.Setup(l => l.CreateOperatorNode('+')).Returns(nodePlus);
+            mock.Setup(l => l.CreateOperatorNode('-')).Returns(nodeMinus);
+            mock.Setup(l => l.CreateOperatorNode('*')).Returns(nodeMult);
+            mock.Setup(l => l.CreateOperatorNode('/')).Returns(nodeDiv);
+            mock.Setup(l => l.CreateOperatorNode('^')).Returns(nodeSqr);
 
             //Stub isOperator
             mock.Setup(l => l.IsOperator('+')).Returns(true);
@@ -77,6 +83,13 @@ namespace Musa_s_Integration_Testing
         {
             var mock = new Mock<OperatorNodeFactory_IntegrationTesting>();
             mock.CallBase = true;
+
+            OperatorNodeFactory factory = new OperatorNodeFactory();
+            OperatorNode nodePlus = factory.CreateOperatorNode('+');
+            OperatorNode nodeMinus = factory.CreateOperatorNode('-');
+            OperatorNode nodeMult = factory.CreateOperatorNode('*');
+            OperatorNode nodeDiv = factory.CreateOperatorNode('/');
+            OperatorNode nodeSqr = factory.CreateOperatorNode('^');
 
             //For GetOperators
             List<char> opList = new List<char>();
@@ -118,11 +131,11 @@ namespace Musa_s_Integration_Testing
 
             OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
 
-            //Assert.That(mockOperator.CreateOperatorNode('+'), Is.EqualTo());
-            //Assert.That(mockOperator.CreateOperatorNode('-'), Is.EqualTo());
-            //Assert.That(mockOperator.CreateOperatorNode('*'), Is.EqualTo());
-            //Assert.That(mockOperator.CreateOperatorNode('/'), Is.EqualTo());
-            //Assert.That(mockOperator.CreateOperatorNode('^'), Is.EqualTo());
+            Assert.That(mockOperator.CreateOperatorNode('+'), Is.EqualTo(nodePlus));
+            Assert.That(mockOperator.CreateOperatorNode('-'), Is.EqualTo(nodeMinus));
+            Assert.That(mockOperator.CreateOperatorNode('*'), Is.EqualTo(nodeMult));
+            Assert.That(mockOperator.CreateOperatorNode('/'), Is.EqualTo(nodeDiv));
+            Assert.That(mockOperator.CreateOperatorNode('^'), Is.EqualTo(nodeSqr));
 
         }
 
