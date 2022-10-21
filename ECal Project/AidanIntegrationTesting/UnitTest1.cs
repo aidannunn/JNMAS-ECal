@@ -11,9 +11,7 @@ namespace IntegrationTestingExpressionTree
         [SetUp]
         public void Setup()
         {
-
         }
-
 
         /// <summary>
         /// Test the ExpressionTree with all methods stubbed.
@@ -25,7 +23,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             List<string> str = new List<string> { "5", "2", "4", "3", "-", "*", "+" };
@@ -110,7 +108,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -126,7 +124,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             List<string> str = new List<string> { "5", "2", "4", "3", "-", "*", "+" };
@@ -208,7 +206,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -231,7 +229,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             List<string> str = new List<string> { "5", "2", "4", "3", "-", "*", "+" };
@@ -286,7 +284,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -299,7 +297,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             //stub IsOperatorOrParenthesis. first set of calls is in Shunting Yard algorithm on the expression, second set of calls is in build tree on postfix
@@ -358,7 +356,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -371,7 +369,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             //stub IsLeftParenthesis
@@ -411,7 +409,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -424,7 +422,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             //stub IsRightParenthesis
@@ -461,7 +459,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -474,7 +472,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             //stub IsLeftAssociative
@@ -508,7 +506,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -531,7 +529,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             //stub IsHigherPrecedence
@@ -558,7 +556,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -571,7 +569,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             //stub IsSamePrecedence
@@ -591,7 +589,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -604,7 +602,7 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
             //stub IsLowerPrecedence
@@ -613,7 +611,7 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
             mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }
@@ -626,10 +624,10 @@ namespace IntegrationTestingExpressionTree
         {
             //Formula input -> ("5+2*(4-3)")
             OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_IntegrationTesting>("5+2*(4-3)");// create mock
+            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
             mock.CallBase = true;// allow partial mocks
 
-            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
         }

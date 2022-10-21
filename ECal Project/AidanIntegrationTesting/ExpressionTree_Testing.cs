@@ -1,24 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ExpressionTree.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace SpreadsheetEngine
 {
-    public class ExpressionTree_IntegrationTesting
-    {
-        public ExpressionTreeNode root;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using System.Threading.Tasks;
 
-        public OperatorNodeFactory factory = new OperatorNodeFactory();
+    /// <summary>
+    /// Class which will handle evaluating cell expressions in the spreadsheet.
+    /// </summary>
+    public class ExpressionTree_Testing
+    {
+        private ExpressionTreeNode root;
+
+        private OperatorNodeFactory factory = new OperatorNodeFactory();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExpressionTree_IntegrationTesting"/> class.
+        /// Initializes a new instance of the <see cref="ExpressionTree"/> class.
         /// Construct tree from the specific expression.
         /// </summary>
         /// <param name="expression">Mathematical expression that will be parsed into an expression tree.</param>
-        public ExpressionTree_IntegrationTesting(string expression)
+        public ExpressionTree_Testing(string expression)
         {
             this.root = this.BuildTree(expression);
         }
