@@ -51,7 +51,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="expression">Mathematical expression.</param>
         /// <returns>Input expression in postfix notation.</returns>
-        public List<string> ShuntingYardAlgorithm(string expression)
+        public virtual List<string> ShuntingYardAlgorithm(string expression)
         {
             List<string> postfix = new List<string>();
             Stack<char> operators = new Stack<char>();
