@@ -1,31 +1,25 @@
-﻿// <copyright file="ExpressionTree.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+using Moq;
+using Newtonsoft.Json;
+using NUnit.Framework.Interfaces;
+using SpreadsheetEngine;
+using System.Linq.Expressions;
+using System.Reflection;
 
-namespace SpreadsheetEngine
+namespace BuildTreeNunit
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    /// <summary>
-    /// Class which will handle evaluating cell expressions in the spreadsheet.
-    /// </summary>
-    public class ExpressionTree
+    //USE A COPY TO AVOID BAD CODE SMELLS ON THE ACTUAL CLASS.
+    public class ExpressionTree_IntegrationTesting
     {
-        private ExpressionTreeNode root;
+        public ExpressionTreeNode root;
 
-        private OperatorNodeFactory factory = new OperatorNodeFactory();
+        public OperatorNodeFactory factory = new OperatorNodeFactory();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExpressionTree"/> class.
+        /// Initializes a new instance of the <see cref="ExpressionTree_IntegrationTesting"/> class.
         /// Construct tree from the specific expression.
         /// </summary>
         /// <param name="expression">Mathematical expression that will be parsed into an expression tree.</param>
-        public ExpressionTree(string expression)
+        public ExpressionTree_IntegrationTesting(string expression)
         {
             this.root = this.BuildTree(expression);
         }
@@ -34,16 +28,9 @@ namespace SpreadsheetEngine
         /// Evaluates the binary expression tree to a double value. No-input override.
         /// </summary>
         /// <returns>Function call to an overridden version of Evaluate() that performs the arithmetic.</returns>
-        public double Evaluate()
+        public virtual double Evaluate()
         {
-            if (this.root == null)
-            {
-                return 0;
-            }
-            else
-            {
-                return this.root.Evaluate();
-            }
+            return this.root.Evaluate();
         }
 
         /// <summary>
@@ -51,7 +38,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="expression">Mathematical expression.</param>
         /// <returns>Input expression in postfix notation.</returns>
-        public List<string> ShuntingYardAlgorithm(string expression)
+        public virtual List<string> ShuntingYardAlgorithm(string expression)
         {
             List<string> postfix = new List<string>();
             Stack<char> operators = new Stack<char>();
@@ -72,7 +59,7 @@ namespace SpreadsheetEngine
                     {
                         operators.Push(c);
                     }
-                    else if (this.IsRightParentheses(c))
+                    else if (this.IsRightParenthesis(c))
                     {
                         char op = operators.Pop();
                         while (!this.IsLeftParenthesis(op))
@@ -132,7 +119,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="expression">Input string.</param>
         /// <returns>Binary expressiont tree output.</returns>
-        public ExpressionTreeNode BuildTree(string expression)
+        public virtual ExpressionTreeNode BuildTree(string expression)
         {
             // Check if string is null;
             if (string.IsNullOrEmpty(expression))
@@ -173,13 +160,13 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="v">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsOperatorOrParenthesis(char v)
+        public virtual bool IsOperatorOrParenthesis(char v)
         {
             if (this.factory.GetOperators().Contains(v))
             {
                 return true;
             }
-            else if (this.IsLeftParenthesis(v) || this.IsRightParentheses(v))
+            else if (this.IsLeftParenthesis(v) || this.IsRightParenthesis(v))
             {
                 return true;
             }
@@ -194,7 +181,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsLeftParenthesis(char c)
+        public virtual bool IsLeftParenthesis(char c)
         {
             if (c == '(')
             {
@@ -211,7 +198,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsRightParentheses(char c)
+        public virtual bool IsRightParenthesis(char c)
         {
             if (c == ')')
             {
@@ -228,7 +215,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsLeftAssociative(char c)
+        public virtual bool IsLeftAssociative(char c)
         {
             if (this.factory.GetAssociativity(c) == OperatorNode.Associative.Left)
             {
@@ -246,7 +233,7 @@ namespace SpreadsheetEngine
         /// <param name="c">Left character in expression.</param>
         /// <param name="v">Right character in expression.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsLowerPrecedence(char c, char v)
+        public virtual bool IsLowerPrecedence(char c, char v)
         {
             if (this.factory.GetPrecedence(c) < this.factory.GetPrecedence(v))
             {
@@ -263,7 +250,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsRightAssociative(char c)
+        public virtual bool IsRightAssociative(char c)
         {
             OperatorNode node = this.factory.CreateOperatorNode(c);
 
@@ -283,7 +270,7 @@ namespace SpreadsheetEngine
         /// <param name="c">Left character in expression.</param>
         /// <param name="v">Right character in expression.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsSamePrecedence(char c, char v)
+        public virtual bool IsSamePrecedence(char c, char v)
         {
             if (this.factory.GetPrecedence(c) == this.factory.GetPrecedence(v))
             {
@@ -301,7 +288,7 @@ namespace SpreadsheetEngine
         /// <param name="c">Left character in expression.</param>
         /// <param name="v">Right character in expression.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsHigherPrecedence(char c, char v)
+        public virtual bool IsHigherPrecedence(char c, char v)
         {
             if (this.factory.GetPrecedence(c) > this.factory.GetPrecedence(v))
             {
@@ -311,6 +298,86 @@ namespace SpreadsheetEngine
             {
                 return false;
             }
+        }
+    }
+
+    public class Tests
+    {
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        [Test]
+        public void TestBuildTreeEmptyFormula()
+        {
+            ExpressionTree expressionTree = new ExpressionTree("");
+            MethodInfo methodInfo = typeof(ExpressionTree).GetMethod("BuildTree", BindingFlags.NonPublic | BindingFlags.Instance);
+            object[] parameters = { "" };
+            object result = methodInfo.Invoke(expressionTree, parameters);
+            Assert.That(result, Is.EqualTo(null));
+        }
+
+        [Test]
+        public void TestBuildTreeInvalidFormula()
+        {
+            var mock = new Mock<ExpressionTree_IntegrationTesting>("");
+            List<string> list = new List<string>();
+            list.Add("1");
+            list.Add("2");
+            list.Add("");
+            list.Add("/");
+            list.Add("+");
+            
+            mock.Setup(l => l.ShuntingYardAlgorithm("1+2/")).Returns(list);
+            mock.CallBase = true;
+            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+
+            List<string> list1 = mockTree.ShuntingYardAlgorithm("1+2/");
+            Assert.That(mockTree.ShuntingYardAlgorithm("1+2/"), Is.EqualTo(list));
+
+            Exception ex = Assert.Throws<System.Exception>(
+                            delegate { object result = mockTree.BuildTree("1+2/"); });
+        }
+
+        [Test]
+        public void TestBuildTreeOneNumberFormula()
+        {
+            var mock = new Mock<ExpressionTree_IntegrationTesting>("");
+            List<string> list = new List<string>();
+            list.Add("1.2");
+
+            mock.Setup(l => l.ShuntingYardAlgorithm("1.2")).Returns(list);
+            mock.CallBase = true;
+            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+
+            Assert.That(JsonConvert.SerializeObject(mockTree.BuildTree("1.2")), Is.EqualTo(JsonConvert.SerializeObject(new ConstantNode(1.2))));
+            Assert.That(mockTree.BuildTree("1.2").Evaluate(), Is.EqualTo(1.2));
+        }
+
+        [Test]
+        public void TestBuildTreeNoSpaces()
+        {
+            OperatorNode expectedRoot = new DivideOperatorNode();
+            OperatorNode expected = new PlusOperatorNode();
+            expected.Left = new ConstantNode(1);
+            expected.Right = new ConstantNode(2);
+            expectedRoot.Right = new ConstantNode(4);
+            expectedRoot.Left = expected;
+
+            var mock = new Mock<ExpressionTree_IntegrationTesting>("");
+            List<string> list = new List<string>();
+            list.Add("1");
+            list.Add("2");
+            list.Add("+");
+            list.Add("4");
+            list.Add("/");
+            mock.Setup(l => l.ShuntingYardAlgorithm("(1+2)/4")).Returns(list);
+            mock.CallBase = true;
+            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+
+            Assert.That(JsonConvert.SerializeObject(mockTree.BuildTree("(1+2)/4")), Is.EqualTo(JsonConvert.SerializeObject(expectedRoot)));
+            Assert.That(mockTree.BuildTree("(1+2)/4").Evaluate(), Is.EqualTo(0.75));
         }
     }
 }
