@@ -311,11 +311,10 @@ namespace BuildTreeNunit
         [Test]
         public void TestBuildTreeEmptyFormula()
         {
-            ExpressionTree expressionTree = new ExpressionTree("");
-            MethodInfo methodInfo = typeof(ExpressionTree).GetMethod("BuildTree", BindingFlags.NonPublic | BindingFlags.Instance);
-            object[] parameters = { "" };
-            object result = methodInfo.Invoke(expressionTree, parameters);
-            Assert.That(result, Is.EqualTo(null));
+            var mock = new Mock<ExpressionTree_IntegrationTesting>("");
+            mock.CallBase = true;
+            ExpressionTree_IntegrationTesting mockTree = mock.Object;
+            Assert.That(mockTree.BuildTree(""), Is.EqualTo(null));
         }
 
         [Test]

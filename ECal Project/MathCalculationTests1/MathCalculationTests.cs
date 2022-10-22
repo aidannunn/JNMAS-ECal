@@ -1,6 +1,6 @@
 using ECalProject;
 
-namespace MathCalculationNUnit
+namespace MathCalculationTests1
 {
     public class Tests
     {
