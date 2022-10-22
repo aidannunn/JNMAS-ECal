@@ -132,7 +132,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="expression">Input string.</param>
         /// <returns>Binary expressiont tree output.</returns>
-        private ExpressionTreeNode BuildTree(string expression)
+        public ExpressionTreeNode BuildTree(string expression)
         {
             // Check if string is null;
             if (string.IsNullOrEmpty(expression))
