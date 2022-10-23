@@ -91,10 +91,6 @@ namespace ECalProject
         //Inverse function
         public double inverseFunction(double num)
         {
-            if(num == 0)
-            {
-                return 0;
-            }
             return 1 / num;
         }
 
