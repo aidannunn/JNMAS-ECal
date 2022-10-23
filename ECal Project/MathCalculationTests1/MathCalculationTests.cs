@@ -111,7 +111,7 @@ namespace MathCalculationTests1
         public void TestInverseFunctionZero()
         {
             MathCalculation mathCalculation = new MathCalculation();
-            Assert.That(mathCalculation.inverseFunction(0), Is.EqualTo(0));
+            Assert.That(mathCalculation.inverseFunction(0), Is.EqualTo(Double.PositiveInfinity));
         }
 
         [Test]
