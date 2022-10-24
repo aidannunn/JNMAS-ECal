@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using NUnit.Framework;
 using SpreadsheetEngine;
 
@@ -11,8 +6,6 @@ namespace UnitTesting
 {
     public class SpreadSheetTest
     {
-        private List<string> validStrings = new List<string>() { "1+1", "1*1", "2^2", "1/1", "1-1", "(1+1)+1" };
-
         [SetUp]
         public void Setup()
         {
