@@ -36,7 +36,14 @@ namespace SpreadsheetEngine
         /// <returns>Function call to an overridden version of Evaluate() that performs the arithmetic.</returns>
         public double Evaluate()
         {
-            return this.root.Evaluate();
+            if (this.root == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return this.root.Evaluate();
+            }
         }
 
         /// <summary>
@@ -44,7 +51,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="expression">Mathematical expression.</param>
         /// <returns>Input expression in postfix notation.</returns>
-        public List<string> ShuntingYardAlgorithm(string expression)
+        public virtual List<string> ShuntingYardAlgorithm(string expression)
         {
             List<string> postfix = new List<string>();
             Stack<char> operators = new Stack<char>();
@@ -125,7 +132,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="expression">Input string.</param>
         /// <returns>Binary expressiont tree output.</returns>
-        private ExpressionTreeNode BuildTree(string expression)
+        public ExpressionTreeNode BuildTree(string expression)
         {
             // Check if string is null;
             if (string.IsNullOrEmpty(expression))

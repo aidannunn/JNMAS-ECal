@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MathCalculation.cs" />
     <Compile Include="Nodes\ConstantNode.cs" />
     <Compile Include="Nodes\DivideOperatorNode.cs" />
     <Compile Include="Nodes\ExpressionTreeNode.cs" />
