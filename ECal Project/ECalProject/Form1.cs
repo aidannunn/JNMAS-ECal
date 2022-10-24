@@ -21,6 +21,7 @@ namespace ECalProject
 
             // will remain false until an open there is an open
             this.closeParButton.Enabled = false;
+
         }
 
         // enables and disables buttons on a given circumstance
@@ -211,6 +212,66 @@ namespace ECalProject
             this.outputTextBox.Text = string.Empty;
             // disables all numbers so that the user is forced to select another operation to add to the end parethesis
             this.disableAllNumbers();
+        }
+
+        private void sqrt_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.squareRoot(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void ln_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.ln(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void log_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.log(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void sine_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.sine(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void cosine_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.cosine(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void tangent_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.tangent(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void radian_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.radian(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void factorial_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.factorial(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void percent_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.percent(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void eConstant_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.eConstant(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void inverse_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.inverseFunction(Convert.ToDouble(this.outputTextBox.Text)));
+        }
+
+        private void Pi_Click(object sender, EventArgs e)
+        {
+            this.outputTextBox.Text = Convert.ToString(mathCalc.piFunction());
         }
     }
 }
