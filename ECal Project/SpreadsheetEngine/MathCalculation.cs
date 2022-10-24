@@ -56,6 +56,11 @@ namespace SpreadsheetEngine
         //Factorial
         public double factorial(double num)
         {
+            if (num == 0)
+            {
+                return 0;
+            }
+
             double ans = 1;
 
             while(num != 0)
@@ -68,10 +73,9 @@ namespace SpreadsheetEngine
         }
 
         //Percent
-        public double percent(double num1, double num2)
+        public double percent(double num)
         {
-            double prod = num1 * num2;
-            return prod / 100;
+            return num / 100;
         }
 
         //e-constant (euler's constant)
@@ -84,6 +88,11 @@ namespace SpreadsheetEngine
         public double inverseFunction(double num)
         {
             return 1 / num;
+        }
+
+        public double piFunction()
+        {
+            return Math.PI;
         }
     }
 }
