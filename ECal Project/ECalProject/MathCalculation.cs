@@ -60,6 +60,11 @@ namespace ECalProject
         //Factorial
         public double factorial(double num)
         {
+            if (num == 0)
+            {
+                return 0;
+            }
+
             double ans = 1;
 
             while(num != 0)
