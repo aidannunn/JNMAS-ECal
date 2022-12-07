@@ -262,21 +262,21 @@ namespace IntegrationTestingExpressionTreeBlackbox
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -329,21 +329,21 @@ namespace IntegrationTestingExpressionTreeBlackbox
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -377,21 +377,21 @@ namespace IntegrationTestingExpressionTreeBlackbox
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -422,21 +422,21 @@ namespace IntegrationTestingExpressionTreeBlackbox
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -464,21 +464,21 @@ namespace IntegrationTestingExpressionTreeBlackbox
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -509,21 +509,21 @@ namespace IntegrationTestingExpressionTreeBlackbox
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -537,21 +537,21 @@ namespace IntegrationTestingExpressionTreeBlackbox
         public void Test11_IsHigherPrecedence()
         {
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -565,10 +565,10 @@ namespace IntegrationTestingExpressionTreeBlackbox
         public void Test12_IsSamePrecedence()
         {
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
