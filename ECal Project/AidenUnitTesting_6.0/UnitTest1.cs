@@ -76,6 +76,10 @@ namespace Aidan_s_Unit_Testing
             object[] parameter2 = { '-' };//parameter to be passed into private method. passed in as array
             object result2 = methodInfo.Invoke(testObject, parameter2);//result stores the result of calling the method
             Assert.That(result2, Is.EqualTo(false));
+
+            object[] parameter3 = { '5' };//parameter to be passed into private method. passed in as array
+            object result3 = methodInfo.Invoke(testObject, parameter3);//result stores the result of calling the method
+            Assert.That(result3, Is.EqualTo(false));
         }
 
         /// <summary>
@@ -93,6 +97,10 @@ namespace Aidan_s_Unit_Testing
             object[] parameter2 = { '*' };//parameter to be passed into private method. passed in as array
             object result2 = methodInfo.Invoke(testObject, parameter2);//result stores the result of calling the method
             Assert.That(result2, Is.EqualTo(false));
+
+            object[] parameter3 = { '5' };//parameter to be passed into private method. passed in as array
+            object result3 = methodInfo.Invoke(testObject, parameter3);//result stores the result of calling the method
+            Assert.That(result3, Is.EqualTo(false));
         }
 
         /// <summary>
