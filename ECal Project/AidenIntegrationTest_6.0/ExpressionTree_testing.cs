@@ -36,7 +36,14 @@ namespace SpreadsheetEngine
         /// <returns>Function call to an overridden version of Evaluate() that performs the arithmetic.</returns>
         public virtual double Evaluate()
         {
-            return this.root.Evaluate();
+            if (this.root == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return this.root.Evaluate();
+            }
         }
 
         /// <summary>

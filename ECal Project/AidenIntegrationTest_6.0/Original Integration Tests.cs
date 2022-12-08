@@ -4,13 +4,21 @@ using SpreadsheetEngine;
 using Moq;
 using System.Collections.Generic;
 
-namespace IntegrationTestingExpressionTree
+namespace IntegrationTestingExpressionTreeBlackbox
 {
+    [TestFixture]
     public class Tests
     {
+        OperatorNodeFactory factory;
+        Mock<ExpressionTree_Testing> mock;
+
         [SetUp]
         public void Setup()
         {
+            //Formula input -> ("5+2*(4-3)")
+            factory = new OperatorNodeFactory();
+            mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
+            mock.CallBase = true;// allow partial mocks
         }
 
         /// <summary>
@@ -21,11 +29,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test1_AllMethodsStubbed()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             List<string> str = new List<string> { "5", "2", "4", "3", "-", "*", "+" };
 
             //manually build the tree that is created by BuildTree() since the stubbed method won't create the tree, it only returns the root
@@ -63,6 +66,7 @@ namespace IntegrationTestingExpressionTree
                 .Returns(true)
                 .Returns(false)
                 .Returns(true)
+
                 .Returns(false)
                 .Returns(false)
                 .Returns(false)
@@ -122,11 +126,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test2_Evaluate()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             List<string> str = new List<string> { "5", "2", "4", "3", "-", "*", "+" };
 
             //manually build the tree that is created by BuildTree() since the stubbed method won't create the tree, it only returns the root
@@ -227,11 +226,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test4_BuildTree()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             List<string> str = new List<string> { "5", "2", "4", "3", "-", "*", "+" };
 
             //stub the shunting yard algorithm
@@ -268,21 +262,21 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -295,11 +289,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test5_ShuntingYardAlgorithm()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             //stub IsOperatorOrParenthesis. first set of calls is in Shunting Yard algorithm on the expression, second set of calls is in build tree on postfix
             mock.SetupSequence(l => l.IsOperatorOrParenthesis(It.IsAny<char>()))
                 .Returns(false)
@@ -340,21 +329,21 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -367,11 +356,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test6_IsOperatorOrParenthesis()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             //stub IsLeftParenthesis
             mock.Setup(l => l.IsLeftParenthesis('(')).Returns(true);
 
@@ -393,21 +377,21 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -420,11 +404,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test7_IsLeftParenthesis()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             //stub IsRightParenthesis
             mock.Setup(l => l.IsRightParenthesis(')')).Returns(true);
 
@@ -443,21 +422,21 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -470,11 +449,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test8_IsRightParenthesis()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             //stub IsLeftAssociative
             mock.Setup(l => l.IsLeftAssociative('+')).Returns(true);
             mock.Setup(l => l.IsLeftAssociative('-')).Returns(true);
@@ -490,21 +464,21 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -527,11 +501,6 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test10_IsLeftAssociative()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             //stub IsHigherPrecedence
             mock.Setup(l => l.IsHigherPrecedence('^', It.IsAny<char>())).Returns(true);// power is always higher precedence than any other current operator
             mock.Setup(l => l.IsHigherPrecedence('*', '+')).Returns(true);
@@ -540,21 +509,21 @@ namespace IntegrationTestingExpressionTree
             mock.Setup(l => l.IsHigherPrecedence('/', '-')).Returns(true);
 
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -567,27 +536,22 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test11_IsHigherPrecedence()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             //stub IsSamePrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '+')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '-')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '+')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('+', '-')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('-', '+')).Returns(true);
 
-            mock.Setup(l => l.IsHigherPrecedence('*', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('*', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('/', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '*')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('*', '/')).Returns(true);
+            mock.Setup(l => l.IsSamePrecedence('/', '*')).Returns(true);
 
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -600,16 +564,11 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test12_IsSamePrecedence()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             //stub IsLowerPrecedence
-            mock.Setup(l => l.IsHigherPrecedence('+', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '*')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('+', '/')).Returns(true);
-            mock.Setup(l => l.IsHigherPrecedence('-', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '*')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('+', '/')).Returns(true);
+            mock.Setup(l => l.IsLowerPrecedence('-', '/')).Returns(true);
 
             ExpressionTree_Testing mockTree = mock.Object;
 
@@ -622,14 +581,24 @@ namespace IntegrationTestingExpressionTree
         [Test]
         public void Test13_IsLowerPrecedence()
         {
-            //Formula input -> ("5+2*(4-3)")
-            OperatorNodeFactory factory = new OperatorNodeFactory();
-            var mock = new Mock<ExpressionTree_Testing>("5+2*(4-3)");// create mock
-            mock.CallBase = true;// allow partial mocks
-
             ExpressionTree_Testing mockTree = mock.Object;
 
             Assert.That(mockTree.Evaluate(), Is.EqualTo(7.0));
+        }
+
+        /// <summary>
+        /// Test ExpressionTree with Evaluate unstubbed.
+        /// </summary>
+        [Test]
+        public void Test14_Evaluate()
+        {
+            ExpressionTree expressionTree = new ExpressionTree("5+2*(4-3)");
+
+            Assert.That(expressionTree.Evaluate(), Is.EqualTo(7.0));
+
+            expressionTree = new ExpressionTree("");
+
+            Assert.That(expressionTree.Evaluate(), Is.EqualTo(0));
         }
     }
 }
