@@ -27,17 +27,24 @@ namespace BuildTreeNunit
         public void TestBuildTreeInvalidFormula()
         {
             var mock = new Mock<ExpressionTree>("");
+            var mock_factory = new Mock<OperatorNodeFactory>("");
             List<string> list = new List<string>();
             list.Add("1");
             list.Add("2");
             list.Add("");
             list.Add("/");
             list.Add("+");
-            
+
             mock.Setup(l => l.ShuntingYardAlgorithm("1+2/")).Returns(list);
             mock.Setup(l => l.IsOperatorOrParenthesis('1')).Returns(true);
+<<<<<<< Updated upstream:ECal Project/BuildTreeNunit/BuildTreeTests.cs
 //            mock.Setup(l => l.factory.CreateOperatorNode('/')).Returns(new DivideOperatorNode());
 //            mock.Setup(l => l.factory.CreateOperatorNode('+')).Returns(new PlusOperatorNode());
+=======
+//            mock.Setup(l => l.Factory()).Returns(mock_factory.Object);
+//            mock_factory.Setup(l => l.CreateOperatorNode('+')).Returns(new PlusOperatorNode());
+//            mock.factory = mock_factory.Object;
+>>>>>>> Stashed changes:ECal Project/SebastionUnitTesting/BuildTreeTests.cs
             mock.CallBase = true;
             ExpressionTree mockTree = mock.Object;
 
