@@ -65,7 +65,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="op">Operator character.</param>
         /// <returns>Operator node child.</returns>
-        public OperatorNode CreateOperatorNode(char op)
+        public virtual OperatorNode CreateOperatorNode(char op)
         {
             if (this.operators.ContainsKey(op))
             {

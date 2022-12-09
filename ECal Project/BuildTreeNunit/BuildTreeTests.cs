@@ -35,6 +35,9 @@ namespace BuildTreeNunit
             list.Add("+");
             
             mock.Setup(l => l.ShuntingYardAlgorithm("1+2/")).Returns(list);
+            mock.Setup(l => l.IsOperatorOrParenthesis('1')).Returns(true);
+//            mock.Setup(l => l.factory.CreateOperatorNode('/')).Returns(new DivideOperatorNode());
+//            mock.Setup(l => l.factory.CreateOperatorNode('+')).Returns(new PlusOperatorNode());
             mock.CallBase = true;
             ExpressionTree mockTree = mock.Object;
 
@@ -43,6 +46,8 @@ namespace BuildTreeNunit
 
             Exception ex = Assert.Throws<System.Exception>(
                             delegate { object result = mockTree.BuildTree("1+2/"); });
+
+            Assert.That(ex.Message, Is.EqualTo("Input contained non-numerical values"));
         }
 
         [Test]

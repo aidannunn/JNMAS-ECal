@@ -18,7 +18,7 @@ namespace SpreadsheetEngine
     {
         private ExpressionTreeNode root;
 
-        private OperatorNodeFactory factory = new OperatorNodeFactory();
+        public OperatorNodeFactory factory = new OperatorNodeFactory();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionTree"/> class.
@@ -146,7 +146,7 @@ namespace SpreadsheetEngine
             {
                 if (item.Length == 1 && this.IsOperatorOrParenthesis(item[0]))
                 {
-                    OperatorNode node = this.factory.CreateOperatorNode(item[0]);
+                    OperatorNode node = this.factory.CreateOperatorNode(item[0]); //STUB THIS.
                     node.Right = nodes.Pop();
                     node.Left = nodes.Pop();
                     nodes.Push(node);
@@ -160,7 +160,7 @@ namespace SpreadsheetEngine
                     }
                     else
                     {
-                        throw new Exception("Input contained non-numerical values");//nodes.Push(new VariableNode(item, ref this.variables));
+                        throw new Exception("Input contained non-numerical values"); //nodes.Push(new VariableNode(item, ref this.variables));
                     }
                 }
             }
@@ -173,7 +173,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="v">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsOperatorOrParenthesis(char v)
+        public virtual bool IsOperatorOrParenthesis(char v)
         {
             if (this.factory.GetOperators().Contains(v))
             {
