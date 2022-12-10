@@ -47,6 +47,16 @@ namespace SpreadsheetEngine
         }
 
         /// <summary>
+        /// Creates operator node based on parameter character.
+        /// </summary>
+        /// /// <param name="c">Operater parameter.</param>
+        /// <returns>OperatorNode.</returns>
+        public virtual OperatorNode CreateOperatorNode(char c)
+        {
+            return this.factory.CreateOperatorNode(c);
+        }
+
+        /// <summary>
         /// Sorts an expression from infix to postfix using the Shunting Yard Algorithm.
         /// </summary>
         /// <param name="expression">Mathematical expression.</param>
@@ -146,7 +156,7 @@ namespace SpreadsheetEngine
             {
                 if (item.Length == 1 && this.IsOperatorOrParenthesis(item[0]))
                 {
-                    OperatorNode node = this.factory.CreateOperatorNode(item[0]);
+                    OperatorNode node = this.CreateOperatorNode(item[0]);
                     node.Right = nodes.Pop();
                     node.Left = nodes.Pop();
                     nodes.Push(node);
@@ -173,7 +183,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="v">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsOperatorOrParenthesis(char v)
+        public virtual bool IsOperatorOrParenthesis(char v)
         {
             if (this.factory.GetOperators().Contains(v))
             {
@@ -265,7 +275,7 @@ namespace SpreadsheetEngine
         /// <returns>Boolean true or false.</returns>
         private bool IsRightAssociative(char c)
         {
-            OperatorNode node = this.factory.CreateOperatorNode(c);
+            OperatorNode node = this.CreateOperatorNode(c);
 
             if (this.factory.GetAssociativity(c) == OperatorNode.Associative.Right)
             {

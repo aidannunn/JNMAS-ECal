@@ -57,7 +57,6 @@ namespace BuildTreeNunit
             ExpressionTree mockTree = mock.Object;
 
             Assert.That(JsonConvert.SerializeObject(mockTree.BuildTree("1.2")), Is.EqualTo(JsonConvert.SerializeObject(new ConstantNode(1.2))));
-            Assert.That(mockTree.BuildTree("1.2").Evaluate(), Is.EqualTo(1.2));
         }
 
         [Test]
@@ -78,6 +77,15 @@ namespace BuildTreeNunit
             list.Add("4");
             list.Add("/");
             mock.Setup(l => l.ShuntingYardAlgorithm("(1+2)/4")).Returns(list);
+            mock.Setup(l => l.IsOperatorOrParenthesis('1')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('2')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('4')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('(')).Returns(true);
+            mock.Setup(l => l.IsOperatorOrParenthesis(')')).Returns(true);
+            mock.Setup(l => l.IsOperatorOrParenthesis('+')).Returns(true);
+            mock.Setup(l => l.IsOperatorOrParenthesis('/')).Returns(true);
+            mock.Setup(l => l.CreateOperatorNode('+')).Returns(new PlusOperatorNode());
+            mock.Setup(l => l.CreateOperatorNode('/')).Returns(new DivideOperatorNode());
             mock.CallBase = true;
             ExpressionTree mockTree = mock.Object;
 
