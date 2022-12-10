@@ -1,4 +1,4 @@
-﻿// <copyright file="ExpressionTree.cs" company="PlaceholderCompany">
+// <copyright file="ExpressionTree.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -14,7 +14,7 @@ namespace SpreadsheetEngine
     /// <summary>
     /// Class which will handle evaluating cell expressions in the spreadsheet.
     /// </summary>
-    public class ExpressionTree
+    public class ExpressionTree_Testing
     {
         private ExpressionTreeNode root;
 
@@ -25,7 +25,7 @@ namespace SpreadsheetEngine
         /// Construct tree from the specific expression.
         /// </summary>
         /// <param name="expression">Mathematical expression that will be parsed into an expression tree.</param>
-        public ExpressionTree(string expression)
+        public ExpressionTree_Testing(string expression)
         {
             this.root = this.BuildTree(expression);
         }
@@ -34,7 +34,7 @@ namespace SpreadsheetEngine
         /// Evaluates the binary expression tree to a double value. No-input override.
         /// </summary>
         /// <returns>Function call to an overridden version of Evaluate() that performs the arithmetic.</returns>
-        public double Evaluate()
+        public virtual double Evaluate()
         {
             if (this.root == null)
             {
@@ -72,7 +72,7 @@ namespace SpreadsheetEngine
                     {
                         operators.Push(c);
                     }
-                    else if (this.IsRightParentheses(c))
+                    else if (this.IsRightParenthesis(c))
                     {
                         char op = operators.Pop();
                         while (!this.IsLeftParenthesis(op))
@@ -132,7 +132,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="expression">Input string.</param>
         /// <returns>Binary expressiont tree output.</returns>
-        public ExpressionTreeNode BuildTree(string expression)
+        public virtual ExpressionTreeNode BuildTree(string expression)
         {
             // Check if string is null;
             if (string.IsNullOrEmpty(expression))
@@ -173,13 +173,13 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="v">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsOperatorOrParenthesis(char v)
+        public virtual bool IsOperatorOrParenthesis(char v)
         {
             if (this.factory.GetOperators().Contains(v))
             {
                 return true;
             }
-            else if (this.IsLeftParenthesis(v) || this.IsRightParentheses(v))
+            else if (this.IsLeftParenthesis(v) || this.IsRightParenthesis(v))
             {
                 return true;
             }
@@ -194,7 +194,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsLeftParenthesis(char c)
+        public virtual bool IsLeftParenthesis(char c)
         {
             if (c == '(')
             {
@@ -211,7 +211,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsRightParentheses(char c)
+        public virtual bool IsRightParenthesis(char c)
         {
             if (c == ')')
             {
@@ -228,7 +228,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsLeftAssociative(char c)
+        public virtual bool IsLeftAssociative(char c)
         {
             if (this.factory.GetAssociativity(c) == OperatorNode.Associative.Left)
             {
@@ -246,7 +246,7 @@ namespace SpreadsheetEngine
         /// <param name="c">Left character in expression.</param>
         /// <param name="v">Right character in expression.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsLowerPrecedence(char c, char v)
+        public virtual bool IsLowerPrecedence(char c, char v)
         {
             if (this.factory.GetPrecedence(c) < this.factory.GetPrecedence(v))
             {
@@ -263,7 +263,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsRightAssociative(char c)
+        public virtual bool IsRightAssociative(char c)
         {
             OperatorNode node = this.factory.CreateOperatorNode(c);
 
@@ -283,7 +283,7 @@ namespace SpreadsheetEngine
         /// <param name="c">Left character in expression.</param>
         /// <param name="v">Right character in expression.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsSamePrecedence(char c, char v)
+        public virtual bool IsSamePrecedence(char c, char v)
         {
             if (this.factory.GetPrecedence(c) == this.factory.GetPrecedence(v))
             {
@@ -301,7 +301,7 @@ namespace SpreadsheetEngine
         /// <param name="c">Left character in expression.</param>
         /// <param name="v">Right character in expression.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsHigherPrecedence(char c, char v)
+        public virtual bool IsHigherPrecedence(char c, char v)
         {
             if (this.factory.GetPrecedence(c) > this.factory.GetPrecedence(v))
             {

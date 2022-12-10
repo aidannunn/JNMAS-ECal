@@ -1,38 +1,33 @@
-﻿// <copyright file="OperatorNodeFactory.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+﻿using SpreadsheetEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SpreadsheetEngine
+namespace Musa_s_Integration_Tests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    /// <summary>
-    /// Factory class that builds different types of operator nodes.
-    /// </summary>
-    public class OperatorNodeFactory
+    public class OperatorNodeFactory_IntegrationTesting
     {
+
         private Dictionary<char, Type> operators = new Dictionary<char, Type>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OperatorNodeFactory"/> class.
         /// </summary>
-        public OperatorNodeFactory()
+        public OperatorNodeFactory_IntegrationTesting()
         {
             this.TraverseAvailableOperators((op, type) => this.operators.Add(op, type));
         }
 
-        private delegate void OnOperator(char op, Type type);
+        public delegate void OnOperator(char op, Type type);
 
         /// <summary>
         /// Gets a character list of operators from the dictionary.
         /// </summary>
         /// <returns>List of char operators.</returns>
-        public List<char> GetOperators()
+        public virtual List<char> GetOperators()
         {
             List<char> opList = new List<char>();
             foreach (char key in this.operators.Keys)
@@ -48,7 +43,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="c">Operator character.</param>
         /// <returns>Boolean true or false.</returns>
-        public bool IsOperator(char c)
+        public virtual bool IsOperator(char c)
         {
             if (this.operators.Keys.Contains(c))
             {
@@ -65,7 +60,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="op">Operator character.</param>
         /// <returns>Operator node child.</returns>
-        public OperatorNode CreateOperatorNode(char op)
+        public virtual OperatorNode CreateOperatorNode(char op)
         {
             if (this.operators.ContainsKey(op))
             {
@@ -84,7 +79,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="op">Operator character.</param>
         /// <returns>Ushort value representing precedence.</returns>
-        public ushort GetPrecedence(char op)
+        public virtual ushort GetPrecedence(char op)
         {
             ushort output = 0;
 
@@ -113,7 +108,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="op">Operator character.</param>
         /// <returns>Left or right associativity.</returns>
-        public OperatorNode.Associative GetAssociativity(char op)
+        public virtual OperatorNode.Associative GetAssociativity(char op)
         {
             OperatorNode.Associative output = OperatorNode.Associative.Left;
 
@@ -142,7 +137,7 @@ namespace SpreadsheetEngine
         /// Views the available operator nodes and adds them to the dictionary via the constructor.
         /// </summary>
         /// <param name="onOperator">Delegate.</param>
-        private void TraverseAvailableOperators(OnOperator onOperator)
+        public virtual void TraverseAvailableOperators(OnOperator onOperator)
         {
             Type operatorNodeType = typeof(OperatorNode);
 

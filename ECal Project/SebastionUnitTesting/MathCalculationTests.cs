@@ -1,5 +1,4 @@
 using SpreadsheetEngine;
-using System;
 
 namespace MathCalculationTests1
 {
@@ -9,7 +8,6 @@ namespace MathCalculationTests1
         public void Setup()
         {
         }
-
 
         [Test]
         public void TestRadianMinValue()

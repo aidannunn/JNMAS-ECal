@@ -8,7 +8,7 @@ namespace ECalProject
 {
     public class MathCalculation
     {
-        //Add tests for error cases. Discuss with the team which kinds of testing we should use. Each team member should work on testing methods.
+
         //Square root
         public double squareRoot(double num)
         {
@@ -58,26 +58,22 @@ namespace ECalProject
         }
 
         //Factorial
-        public double factorial(double n)
+        public double factorial(double num)
         {
-<<<<<<< Updated upstream
-            if (n < 0 || n - Math.Floor(n) != 0)
-                throw new Exception("ERROR: Invalid input");/*Wrong value*/
-            if (n == 0)
-                return (1);  /*Terminating condition*/
-            else
-            {
-                return (n * factorial(n - 1));
-=======
-            if (num < 0 || num - Math.Floor(num) != 0)
-                throw new Exception("ERROR: Invalid input");/*Wrong value*/
             if (num == 0)
-                return (1);  /*Terminating condition*/
-            else
             {
-                return (num * factorial(num - 1));
->>>>>>> Stashed changes
+                return 0;
             }
+
+            double ans = 1;
+
+            while(num != 0)
+            {
+                ans *= num;
+                num -= 1;
+            }
+
+            return ans;
         }
 
         //Percent
