@@ -30,6 +30,12 @@ namespace SpreadsheetEngine
             this.root = this.BuildTree(expression);
         }
 
+        public OperatorNodeFactory Factory
+        {
+            get { return factory; }
+            set { factory = value; }
+        }
+
         /// <summary>
         /// Evaluates the binary expression tree to a double value. No-input override.
         /// </summary>

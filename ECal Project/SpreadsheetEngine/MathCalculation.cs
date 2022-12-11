@@ -58,7 +58,7 @@ namespace SpreadsheetEngine
         {
             if (num < 0 || num - Math.Floor(num) != 0)
                 throw new Exception("ERROR: Invalid input");/*Wrong value*/
-            if (num == 0)
+            else if (num == 0)
                 return (1);  /*Terminating condition*/
             else
             {
