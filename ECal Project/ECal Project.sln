@@ -9,11 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaredUnitTesting", "MathCal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetEngine", "SpreadsheetEngine\SpreadsheetEngine.csproj", "{17B370A6-7485-4B51-9E7A-5C356F183D60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AidenIntegrationTest_6.0", "AidenIntegrationTest_6.0\AidenIntegrationTest_6.0.csproj", "{CC0CF4D3-FE36-48A9-ABF4-432E09AEDC31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AidenIntegrationTest_6.0", "AidenIntegrationTest_6.0\AidenIntegrationTest_6.0.csproj", "{CC0CF4D3-FE36-48A9-ABF4-432E09AEDC31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AidenUnitTesting_6.0", "AidenUnitTesting_6.0\AidenUnitTesting_6.0.csproj", "{FB1A750E-041B-4596-9D95-63096895D5F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AidenUnitTesting_6.0", "AidenUnitTesting_6.0\AidenUnitTesting_6.0.csproj", "{FB1A750E-041B-4596-9D95-63096895D5F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SebastionUnitTesting", "SebastionUnitTesting\SebastionUnitTesting.csproj", "{57DD22AB-D0F9-4EA4-82F9-1784F526F664}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SebastionUnitTesting", "SebastionUnitTesting\SebastionUnitTesting.csproj", "{57DD22AB-D0F9-4EA4-82F9-1784F526F664}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AidanIntegrationTestingwithBlackbox", "AidanIntegrationTestingwithBlackbox\AidanIntegrationTestingwithBlackbox.csproj", "{362564A7-1327-4A89-8B0F-442C8C9C7060}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Musa_Integration_Testing", "Musa_Integration_Testing\Musa_Integration_Testing.csproj", "{D817341A-DE3F-4C67-B2F9-271771701495}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{57DD22AB-D0F9-4EA4-82F9-1784F526F664}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57DD22AB-D0F9-4EA4-82F9-1784F526F664}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57DD22AB-D0F9-4EA4-82F9-1784F526F664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362564A7-1327-4A89-8B0F-442C8C9C7060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362564A7-1327-4A89-8B0F-442C8C9C7060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362564A7-1327-4A89-8B0F-442C8C9C7060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362564A7-1327-4A89-8B0F-442C8C9C7060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D817341A-DE3F-4C67-B2F9-271771701495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D817341A-DE3F-4C67-B2F9-271771701495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D817341A-DE3F-4C67-B2F9-271771701495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D817341A-DE3F-4C67-B2F9-271771701495}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
