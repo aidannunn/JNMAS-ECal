@@ -13,12 +13,6 @@ namespace UnitTesting
         }
 
         [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
-
-        [Test]
         [TestCase(0, ExpectedResult = 0)]
         [TestCase(4, ExpectedResult = 2)]
         [TestCase(16, ExpectedResult = 4)]
@@ -49,23 +43,23 @@ namespace UnitTesting
 
         [Test]
         [TestCase(1, ExpectedResult = 0)]
-        [TestCase(16, ExpectedResult = 1.2041199826559248)]
+        [TestCase(16, ExpectedResult = 2.7725887222397811)]
 
         public double TestLnLog(double num)
         {
             MathCalculation mathCalc = new MathCalculation();
 
-            return mathCalc.log(num);
+            return mathCalc.ln(num);
         }
 
         [Test]
-        [TestCase(1, ExpectedResult = 1)]
-        [TestCase(16, ExpectedResult = 4)]
+        [TestCase(1, ExpectedResult = 0)]
+        [TestCase(16, ExpectedResult = 1.2041199826559248)]
         public double TestLog(double num)
         {
             MathCalculation mathCalc = new MathCalculation();
 
-            return mathCalc.squareRoot(num);
+            return mathCalc.log(num);
         }
 
         [Test]
