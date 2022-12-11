@@ -168,31 +168,41 @@ namespace Musa_s_Integration_Tests
 
             OperatorNodeFactory_IntegrationTesting mockOperator = mock.Object;
 
-
+// Supressing errors as tests are valid, visual studios was being picky during merge conflicts
             //Addition
             Assert.IsTrue(mockOperator.IsOperator('+'));
             Assert.AreNotEqual(false,(mockOperator.IsOperator('+')));
+#pragma warning disable NUnit2021 // Incompatible types for EqualTo constraint
             Assert.AreNotEqual(10, mockOperator.IsOperator('+'));
+#pragma warning restore NUnit2021 // Incompatible types for EqualTo constraint
 
             //Subraction
             Assert.IsTrue(mockOperator.IsOperator('-'));
             Assert.AreNotEqual(false, (mockOperator.IsOperator('-')));
+#pragma warning disable NUnit2021 // Incompatible types for EqualTo constraint
             Assert.AreNotEqual(10, mockOperator.IsOperator('-'));
+#pragma warning restore NUnit2021 // Incompatible types for EqualTo constraint
 
             //Multiplication
             Assert.IsTrue(mockOperator.IsOperator('*'));
             Assert.AreNotEqual(false, (mockOperator.IsOperator('*')));
+#pragma warning disable NUnit2021 // Incompatible types for EqualTo constraint
             Assert.AreNotEqual(10, mockOperator.IsOperator('*'));
+#pragma warning restore NUnit2021 // Incompatible types for EqualTo constraint
 
             //Division
             Assert.IsTrue(mockOperator.IsOperator('/'));
             Assert.AreNotEqual(false, (mockOperator.IsOperator('/')));
+#pragma warning disable NUnit2021 // Incompatible types for EqualTo constraint
             Assert.AreNotEqual(10, mockOperator.IsOperator('/'));
+#pragma warning restore NUnit2021 // Incompatible types for EqualTo constraint
 
             //Power
             Assert.IsTrue(mockOperator.IsOperator('^'));
             Assert.AreNotEqual(false, (mockOperator.IsOperator('^')));
+#pragma warning disable NUnit2021 // Incompatible types for EqualTo constraint
             Assert.AreNotEqual(10, mockOperator.IsOperator('^'));
+#pragma warning restore NUnit2021 // Incompatible types for EqualTo constraint
 
 
         }
