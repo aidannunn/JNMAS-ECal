@@ -1,34 +1,39 @@
-﻿namespace SpreadsheetEngine
-{
-    using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+namespace SpreadsheetEngine
+{
     public class MathCalculation
     {
-        // Square root
+
+        //Square root
         public double squareRoot(double num)
         {
             return Math.Sqrt(num);
         }
 
-        // Power
+        //power
         public double power(double num, double power)
         {
             return Math.Pow(num, power);
         }
 
-        // Natural log
+        //Natural log
         public double ln(double num)
         {
             return Math.Log(num);
         }
 
-        // Log
+        //Log
         public double log(double num)
         {
             return Math.Log10(num);
         }
 
-        // Sine
+        //Sine
         public double sine(double num)
         {
             return Math.Sin(num);
@@ -40,13 +45,13 @@
             return Math.Cos(num);
         }
 
-        // Tangent
+        //Tangent
         public double tangent(double num)
         {
             return Math.Tan(num);
         }
 
-        // Radian
+        //Radian
         public double radian(double num)
         {
             return (Math.PI / 180) * num;
@@ -55,20 +60,14 @@
         // Factorial
         public double factorial(double num)
         {
-            if (num == 0)
+            if (num < 0 || num - Math.Floor(num) != 0)
+                throw new Exception("ERROR: Invalid input");/*Wrong value*/
+            else if (num == 0)
+                return (1);  /*Terminating condition*/
+            else
             {
-                return 0;
+                return (num * factorial(num - 1));
             }
-
-            double ans = 1;
-
-            while (num != 0)
-            {
-                ans *= num;
-                num -= 1;
-            }
-
-            return ans;
         }
 
         // Percent
@@ -77,13 +76,13 @@
             return num / 100;
         }
 
-        // e-constant (euler's constant)
+        //e-constant (euler's constant)
         public double eConstant(double num)
         {
             return Math.Pow(Math.E, num);
         }
 
-        // Inverse function
+        //Inverse function
         public double inverseFunction(double num)
         {
             return 1 / num;

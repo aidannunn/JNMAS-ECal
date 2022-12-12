@@ -26,7 +26,7 @@ namespace Aidan_s_Unit_Testing
         [Test]
         public void Test1_IsOperatorOrParenthesis()
         {
-            MethodInfo methodInfo = typeof(ExpressionTree).GetMethod("IsOperatorOrParenthesis", BindingFlags.NonPublic | BindingFlags.Instance);//get the method info from the class
+            MethodInfo methodInfo = typeof(ExpressionTree).GetMethod("IsOperatorOrParenthesis", BindingFlags.Public | BindingFlags.Instance);//get the method info from the class
             
             object[] parameter1 = { '+' };//parameter to be passed into private method. passed in as array
             object result1 = methodInfo.Invoke(testObject, parameter1);//result stores the result of calling the method

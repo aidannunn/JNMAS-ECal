@@ -30,6 +30,12 @@ namespace SpreadsheetEngine
             this.root = this.BuildTree(expression);
         }
 
+        public OperatorNodeFactory Factory
+        {
+            get { return factory; }
+            set { factory = value; }
+        }
+
         /// <summary>
         /// Evaluates the binary expression tree to a double value. No-input override.
         /// </summary>
@@ -44,6 +50,16 @@ namespace SpreadsheetEngine
             {
                 return this.root.Evaluate();
             }
+        }
+
+        /// <summary>
+        /// Creates operator node based on parameter character.
+        /// </summary>
+        /// /// <param name="c">Operater parameter.</param>
+        /// <returns>OperatorNode.</returns>
+        public virtual OperatorNode CreateOperatorNode(char c) // NOTE: I did not develop tests for this function, as doing so would be impractical without stubbing the factory method, which I have attempted to research, but have not successfully accomplish..
+        {
+            return this.factory.CreateOperatorNode(c);
         }
 
         /// <summary>
@@ -146,7 +162,7 @@ namespace SpreadsheetEngine
             {
                 if (item.Length == 1 && this.IsOperatorOrParenthesis(item[0]))
                 {
-                    OperatorNode node = this.factory.CreateOperatorNode(item[0]);
+                    OperatorNode node = this.CreateOperatorNode(item[0]);
                     node.Right = nodes.Pop();
                     node.Left = nodes.Pop();
                     nodes.Push(node);
@@ -160,7 +176,7 @@ namespace SpreadsheetEngine
                     }
                     else
                     {
-                        throw new Exception("Input contained non-numerical values");//nodes.Push(new VariableNode(item, ref this.variables));
+                        throw new Exception("Input contained non-numerical values");
                     }
                 }
             }
@@ -173,7 +189,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// <param name="v">Input character.</param>
         /// <returns>Boolean true or false.</returns>
-        private bool IsOperatorOrParenthesis(char v)
+        public virtual bool IsOperatorOrParenthesis(char v)
         {
             if (this.factory.GetOperators().Contains(v))
             {
@@ -265,7 +281,7 @@ namespace SpreadsheetEngine
         /// <returns>Boolean true or false.</returns>
         private bool IsRightAssociative(char c)
         {
-            OperatorNode node = this.factory.CreateOperatorNode(c);
+            OperatorNode node = this.CreateOperatorNode(c);
 
             if (this.factory.GetAssociativity(c) == OperatorNode.Associative.Right)
             {

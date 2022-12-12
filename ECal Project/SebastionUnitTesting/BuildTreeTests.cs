@@ -38,11 +38,23 @@ namespace BuildTreeNunit
             mock.CallBase = true;
             ExpressionTree mockTree = mock.Object;
 
-            List<string> list1 = mockTree.ShuntingYardAlgorithm("1+2/");
-            Assert.That(mockTree.ShuntingYardAlgorithm("1+2/"), Is.EqualTo(list));
-
             Exception ex = Assert.Throws<System.Exception>(
                             delegate { object result = mockTree.BuildTree("1+2/"); });
+        }
+
+        [Test]
+        public void TestBuildTreeNonNumericValue()
+        {
+            var mock = new Mock<ExpressionTree>("");
+            List<string> list = new List<string>();
+            list.Add("a");
+
+            mock.Setup(l => l.ShuntingYardAlgorithm("a")).Returns(list);
+            mock.CallBase = true;
+            ExpressionTree mockTree = mock.Object;
+
+            Exception ex = Assert.Throws<System.Exception>(
+                            delegate { object result = mockTree.BuildTree("a"); });
         }
 
         [Test]
@@ -57,11 +69,10 @@ namespace BuildTreeNunit
             ExpressionTree mockTree = mock.Object;
 
             Assert.That(JsonConvert.SerializeObject(mockTree.BuildTree("1.2")), Is.EqualTo(JsonConvert.SerializeObject(new ConstantNode(1.2))));
-            Assert.That(mockTree.BuildTree("1.2").Evaluate(), Is.EqualTo(1.2));
         }
 
         [Test]
-        public void TestBuildTreeNoSpaces()
+        public void TestBuildTreeShuntingYardAlternatingNumbersAndOperators()
         {
             OperatorNode expectedRoot = new DivideOperatorNode();
             OperatorNode expected = new PlusOperatorNode();
@@ -70,19 +81,63 @@ namespace BuildTreeNunit
             expectedRoot.Right = new ConstantNode(4);
             expectedRoot.Left = expected;
 
-            var mock = new Mock<ExpressionTree>("");
+            var mock = new Mock<ExpressionTree>("1/2/4");
             List<string> list = new List<string>();
             list.Add("1");
             list.Add("2");
             list.Add("+");
             list.Add("4");
             list.Add("/");
+
             mock.Setup(l => l.ShuntingYardAlgorithm("(1+2)/4")).Returns(list);
+            mock.Setup(l => l.IsOperatorOrParenthesis('1')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('2')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('4')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('+')).Returns(true);
+            mock.Setup(l => l.IsOperatorOrParenthesis('/')).Returns(true);
+            mock.Setup(l => l.CreateOperatorNode('/')).Returns(new DivideOperatorNode());
+            mock.Setup(l => l.CreateOperatorNode('+')).Returns(new PlusOperatorNode());
             mock.CallBase = true;
             ExpressionTree mockTree = mock.Object;
 
             Assert.That(JsonConvert.SerializeObject(mockTree.BuildTree("(1+2)/4")), Is.EqualTo(JsonConvert.SerializeObject(expectedRoot)));
-            Assert.That(mockTree.BuildTree("(1+2)/4").Evaluate(), Is.EqualTo(0.75));
+            Assert.IsTrue(mockTree.BuildTree("(1+2)/4").GetType() == expectedRoot.GetType());
+            Assert.IsTrue(((OperatorNode)mockTree.BuildTree("(1+2)/4")).Right.GetType() == expectedRoot.Right.GetType());
+            Assert.IsTrue(((OperatorNode)mockTree.BuildTree("(1+2)/4")).Left.GetType() == expected.GetType());
+        }
+
+        [Test]
+        public void TestBuildTreeShuntingYardConsecutiveOperators()
+        {
+            OperatorNode expectedRoot = new DivideOperatorNode();
+            OperatorNode expected = new PlusOperatorNode();
+            expected.Left = new ConstantNode(4);
+            expected.Right = new ConstantNode(1);
+            expectedRoot.Left = new ConstantNode(2);
+            expectedRoot.Right = expected;
+
+            var mock = new Mock<ExpressionTree>("2/(4+1)");
+            List<string> list = new List<string>();
+            list.Add("2");
+            list.Add("4");
+            list.Add("1");
+            list.Add("+");
+            list.Add("/");
+
+            mock.Setup(l => l.ShuntingYardAlgorithm("2/(4+1)")).Returns(list);
+            mock.Setup(l => l.IsOperatorOrParenthesis('2')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('4')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('1')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('/')).Returns(true);
+            mock.Setup(l => l.IsOperatorOrParenthesis('+')).Returns(true);
+            mock.Setup(l => l.CreateOperatorNode('/')).Returns(new DivideOperatorNode());
+            mock.Setup(l => l.CreateOperatorNode('+')).Returns(new PlusOperatorNode());
+            mock.CallBase = true;
+            ExpressionTree mockTree = mock.Object;
+
+            Assert.That(JsonConvert.SerializeObject(mockTree.BuildTree("2/(4+1)")), Is.EqualTo(JsonConvert.SerializeObject(expectedRoot)));
+            Assert.IsTrue(mockTree.BuildTree("2/(4+1)").GetType() == expectedRoot.GetType());
+            Assert.IsTrue(((OperatorNode)mockTree.BuildTree("2/(4+1)")).Right.GetType() == expected.GetType());
         }
     }
 }
