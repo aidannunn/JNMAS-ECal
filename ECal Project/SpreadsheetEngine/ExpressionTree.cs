@@ -57,7 +57,7 @@ namespace SpreadsheetEngine
         /// </summary>
         /// /// <param name="c">Operater parameter.</param>
         /// <returns>OperatorNode.</returns>
-        public virtual OperatorNode CreateOperatorNode(char c)
+        public virtual OperatorNode CreateOperatorNode(char c) // NOTE: I did not develop tests for this function, as doing so would be impractical without stubbing the factory method, which I have attempted to research, but have not successfully accomplish..
         {
             return this.factory.CreateOperatorNode(c);
         }
@@ -176,7 +176,7 @@ namespace SpreadsheetEngine
                     }
                     else
                     {
-                        throw new Exception("Input contained non-numerical values");//nodes.Push(new VariableNode(item, ref this.variables));
+                        throw new Exception("Input contained non-numerical values");
                     }
                 }
             }

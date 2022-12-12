@@ -60,20 +60,14 @@ namespace ECalProject
         //Factorial
         public double factorial(double num)
         {
-            if (num == 0)
+            if (num < 0 || num - Math.Floor(num) != 0)
+                throw new Exception("ERROR: Invalid input");/*Wrong value*/
+            else if (num == 0)
+                return (1);  /*Terminating condition*/
+            else
             {
-                return 0;
+                return (num * factorial(num - 1));
             }
-
-            double ans = 1;
-
-            while(num != 0)
-            {
-                ans *= num;
-                num -= 1;
-            }
-
-            return ans;
         }
 
         //Percent
