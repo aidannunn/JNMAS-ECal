@@ -1,4 +1,3 @@
-﻿
 using NUnit.Framework;
 using SpreadsheetEngine;
 
@@ -28,11 +27,14 @@ namespace UnitTesting
         /// Evaluate cannot currently handle negative values
         /// </summary>
         [Test]
+        // NULL CASE
+        [TestCase(null, ExpectedResult = 0)]
+        // Standard equation case 
         [TestCase("1+1", ExpectedResult = 2.0)]
         [TestCase("1*1", ExpectedResult = 1.0)]
         [TestCase("1/1", ExpectedResult = 1.0)]
         [TestCase("1-1", ExpectedResult = 0.0)]
-        // [TestCase("-1+1", ExpectedResult = 0.0)]
+        // Complex equation case
         [TestCase("(1+1)-1", ExpectedResult = 1.0)]
         [TestCase("5*4-2", ExpectedResult = 18.0)]
         public double TestEvaluate(string expression)
@@ -40,6 +42,24 @@ namespace UnitTesting
             ExpressionTree expTree = new ExpressionTree(expression);
             
             return expTree.Evaluate();
+        }
+
+        // Invalid equation case
+        [Test]
+        [TestCase("5*-2")]
+        [TestCase("5*-")]
+        [TestCase("*-")]
+        [TestCase("-2")]
+        public void TestException(string expression)
+        {
+            try
+            {
+                ExpressionTree expTree = new ExpressionTree(expression);
+            } catch (InvalidOperationException)
+            {
+                // Catch should catch the exception for invalid input
+                Assert.Pass();
+            }
         }
 
         /// <summary>
@@ -53,6 +73,7 @@ namespace UnitTesting
         [TestCase("2^2", new string[] { "2", "2", "^" })]
         [TestCase("(1+1)-1", new string[] { "1", "1", "+" , "-", "1"})]
         [TestCase("5*4-2", new string[] { "5", "4", "2", "*", "-" })]
+        [TestCase("5+4*2", new string[] { "5", "4", "2", "*", "+" })]
         public void TestShuntinYardAlgorithm(string testExpression, string[] expectedResults)
         {
             ExpressionTree expTree = new ExpressionTree(string.Empty);

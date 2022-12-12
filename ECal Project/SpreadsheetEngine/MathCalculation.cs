@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,20 +57,26 @@ namespace SpreadsheetEngine
             return (Math.PI / 180) * num;
         }
 
-        //Factorial
+        // Factorial
         public double factorial(double num)
         {
-            if (num < 0 || num - Math.Floor(num) != 0)
-                throw new Exception("ERROR: Invalid input");/*Wrong value*/
-            else if (num == 0)
-                return (1);  /*Terminating condition*/
-            else
+            if (num == 0)
             {
-                return (num * factorial(num - 1));
+                return 0;
             }
+
+            double ans = 1;
+
+            while (num != 0)
+            {
+                ans *= num;
+                num -= 1;
+            }
+
+            return ans;
         }
 
-        //Percent
+        // Percent
         public double percent(double num)
         {
             return num / 100;
