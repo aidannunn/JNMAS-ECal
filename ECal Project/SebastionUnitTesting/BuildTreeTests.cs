@@ -30,15 +30,20 @@ namespace BuildTreeNunit
             List<string> list = new List<string>();
             list.Add("1");
             list.Add("2");
-            list.Add("");
             list.Add("/");
             list.Add("+");
-            
+
             mock.Setup(l => l.ShuntingYardAlgorithm("1+2/")).Returns(list);
+            mock.Setup(l => l.IsOperatorOrParenthesis('1')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('2')).Returns(false);
+            mock.Setup(l => l.IsOperatorOrParenthesis('/')).Returns(true);
+            mock.Setup(l => l.IsOperatorOrParenthesis('+')).Returns(true);
+            mock.Setup(l => l.CreateOperatorNode('/')).Returns(new DivideOperatorNode());
+            mock.Setup(l => l.CreateOperatorNode('+')).Returns(new PlusOperatorNode());
             mock.CallBase = true;
             ExpressionTree mockTree = mock.Object;
 
-            Exception ex = Assert.Throws<System.Exception>(
+            Exception ex = Assert.Throws<System.InvalidOperationException>(
                             delegate { object result = mockTree.BuildTree("1+2/"); });
         }
 
@@ -50,6 +55,7 @@ namespace BuildTreeNunit
             list.Add("a");
 
             mock.Setup(l => l.ShuntingYardAlgorithm("a")).Returns(list);
+            mock.Setup(l => l.IsOperatorOrParenthesis('a')).Returns(false);
             mock.CallBase = true;
             ExpressionTree mockTree = mock.Object;
 
@@ -81,7 +87,7 @@ namespace BuildTreeNunit
             expectedRoot.Right = new ConstantNode(4);
             expectedRoot.Left = expected;
 
-            var mock = new Mock<ExpressionTree>("1/2/4");
+            var mock = new Mock<ExpressionTree>("");
             List<string> list = new List<string>();
             list.Add("1");
             list.Add("2");
@@ -116,7 +122,7 @@ namespace BuildTreeNunit
             expectedRoot.Left = new ConstantNode(2);
             expectedRoot.Right = expected;
 
-            var mock = new Mock<ExpressionTree>("2/(4+1)");
+            var mock = new Mock<ExpressionTree>("");
             List<string> list = new List<string>();
             list.Add("2");
             list.Add("4");
